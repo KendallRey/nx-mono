@@ -1,0 +1,16 @@
+{
+  "name": "services",
+  "$schema": "../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "services/src",
+  "projectType": "library",
+  "tags": [],
+  "// targets": "to see all targets run: nx show project services --web",
+  "targets": {
+    "prettier": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "nx format:write --projects services"
+      }
+    }
+  }
+}
