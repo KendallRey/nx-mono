@@ -111,7 +111,7 @@ export * from "./button/Button";
 export { default as MuiButton } from "./button/Button";
 
 export * from "./box/Box";
-export { default as MuiBox } from "./box/Box";
+export type * from "./box/Box";
 
 export * from "./badge/Badge";
 export { default as MuiBadge } from "./badge/Badge";
@@ -125,7 +125,7 @@ export type * from "./types/index";
 
 export * from "./date-picker/DateRangePicker";
 
-export * from './custom/PageBreadCrumbs'
+export * from "./custom/PageBreadCrumbs";
 
 export * from "./hooks/useAppMediaQuery";
 

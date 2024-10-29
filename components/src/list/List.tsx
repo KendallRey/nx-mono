@@ -17,7 +17,7 @@ import React from "react";
 type IMuiList = ListProps;
 
 const MuiList: React.FC<IMuiList> = (props) => {
-  return <List {...props} sx={{ position: "unset", ...props.sx}}/>;
+  return <List {...props} sx={{ position: "unset", ...props.sx }} />;
 };
 
 export default MuiList;
