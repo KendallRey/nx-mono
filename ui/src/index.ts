@@ -8,3 +8,4 @@ export * from './carousel/ImageCarousel';
 export * from './section/Section';
 export * from './filter/FilterSection';
 export * from './footer/Footer';
+export * from './banner/ImageBanner';
