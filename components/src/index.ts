@@ -119,6 +119,9 @@ export { default as MuiBadge } from "./badge/Badge";
 export * from "./avatar/Avatar";
 export { default as MuiAvatar } from "./avatar/Avatar";
 
+export * from "./markdown/MDEditor";
+export * from "./markdown/RMDEditor";
+
 export * from "./rating/Rating";
 
 export type * from "./types/index";
