@@ -1,21 +1,25 @@
 import * as THREE from 'three';
-import * as CANNON from 'cannon-es'
-import DynamicObj from "./dynamic-obj";
-import { SetVectorRandom, ThreeMeshOptions, ThreeVec3ToCannonVec3 } from './helper';
+import * as CANNON from 'cannon-es';
+import DynamicObj from './dynamic-obj';
+import {
+  SetVectorRandom,
+  ThreeMeshOptions,
+  ThreeVec3ToCannonVec3,
+} from './helper';
 
 class Particle extends DynamicObj {
-
   async init(position: THREE.Vector3, options: ThreeMeshOptions) {
-
-    let x = 0.5, y = 0.5, z = 0.5;
-    if(options.scale) {
+    let x = 0.5,
+      y = 0.5,
+      z = 0.5;
+    if (options.scale) {
       x = options.scale.x;
       y = options.scale.y;
       z = options.scale.z;
     }
 
-    const positionOffset = SetVectorRandom({ x: .4, y: .4, z: .4});
-    const newPosition = position.clone().add(positionOffset)
+    const positionOffset = SetVectorRandom({ x: 0.4, y: 0.4, z: 0.4 });
+    const newPosition = position.clone().add(positionOffset);
 
     const geometry = new THREE.BoxGeometry(x, y, z);
     const material = new THREE.MeshBasicMaterial(options.materialProps);
@@ -28,14 +32,13 @@ class Particle extends DynamicObj {
     body.position.copy(newVec3);
 
     this.setObj(mesh, body);
-
   }
 
-  updateOpacity(opacity: number){
-    if(this.mesh instanceof THREE.Mesh){
+  updateOpacity(opacity: number) {
+    if (this.mesh instanceof THREE.Mesh) {
       this.mesh.material.opacity = opacity;
     }
   }
 }
 
-export default Particle
+export default Particle;

@@ -1,10 +1,8 @@
-
 declare module 'three-to-cannon' {
-
-  type IShapeType = 'hull'
+  type IShapeType = 'hull';
   const ShapeType: Record<string, IShapeType> = {
     HULL: 'hull',
   } as const;
 
-  function threeToCannon( mesh, { type: IShapeType })
+  function threeToCannon(mesh, { type: IShapeType });
 }

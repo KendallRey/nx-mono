@@ -1,13 +1,12 @@
 import * as THREE from 'three';
-import * as CANNON from 'cannon-es'
-import DynamicObj from "./dynamic-obj";
+import * as CANNON from 'cannon-es';
+import DynamicObj from './dynamic-obj';
 import { FBXLoader } from 'three/examples/jsm/loaders/FBXLoader.js';
 import Turret from './turret';
 import Effect from './effects';
 import { CannonBodyOptions, ThreeVec3ToCannonVec3 } from './helper';
 
 class HoverShip extends DynamicObj {
-
   protected model?: THREE.Group<THREE.Object3DEventMap>;
   protected loader = new FBXLoader();
   turrets: Turret[] = [];
@@ -22,20 +21,30 @@ class HoverShip extends DynamicObj {
   protected thrustForce = new CANNON.Vec3(0, 0, 0);
   protected targetDispersion = new THREE.Vector3(0.8, 0, 0.8);
 
-  public async init(scale: number, position: THREE.Vector3, url: string, bodyProps?: CannonBodyOptions) {
+  public async init(
+    scale: number,
+    position: THREE.Vector3,
+    url: string,
+    bodyProps?: CannonBodyOptions
+  ) {
     this.model = await this.loader.loadAsync(`${url}.fbx`);
-    this.model.scale.set(scale, scale, scale)
+    this.model.scale.set(scale, scale, scale);
 
-    this.model.traverse(child => {
+    this.model.traverse((child) => {
       if ((child as THREE.Mesh).isMesh) {
         const mesh = child as THREE.Mesh;
         mesh.material = new THREE.MeshStandardMaterial({ color: 0xffffff });
         mesh.castShadow = true;
-        this.processGroup(mesh)
+        this.processGroup(mesh);
       }
     });
 
-    const body = this.useBoxShape(this.model, { mass: 100, linearDamping: 0.2, angularDamping: 0.6, ...bodyProps });
+    const body = this.useBoxShape(this.model, {
+      mass: 100,
+      linearDamping: 0.2,
+      angularDamping: 0.6,
+      ...bodyProps,
+    });
     // const body = this.useConvexShape(this.model, { mass: 100, linearDamping: 0.2, angularDamping: 0.6, ...bodyProps });
     const newVec3 = ThreeVec3ToCannonVec3(position);
     body.position.copy(newVec3);
@@ -53,7 +62,7 @@ class HoverShip extends DynamicObj {
   fireTurret(_target: THREE.Vector3, _effects: Effect[]) {}
 
   processGroup(obj: THREE.Object3D<THREE.Object3DEventMap>) {
-    if(obj.name.includes('turret')){
+    if (obj.name.includes('turret')) {
       const turret = new Turret(obj);
       this.turrets.push(turret);
     }
@@ -66,7 +75,7 @@ class HoverShip extends DynamicObj {
   updateMovement() {
     this.updateThrust();
 
-    this.body?.applyLocalForce(this.thrustForce, new CANNON.Vec3(0,0,0));
+    this.body?.applyLocalForce(this.thrustForce, new CANNON.Vec3(0, 0, 0));
   }
 
   protected updateThrust() {
@@ -74,14 +83,18 @@ class HoverShip extends DynamicObj {
   }
 
   protected useFixedAltitude() {
-    if(!this.body) return;
+    if (!this.body) return;
     const distance = this.body.position.y;
-    if(distance > this.targetAltitude) return;
-    this.thrustForce.y = Math.abs(((distance - this.targetAltitude) * this.thrustForceMultiplier) * this.hoverOffsetForce);
+    if (distance > this.targetAltitude) return;
+    this.thrustForce.y = Math.abs(
+      (distance - this.targetAltitude) *
+        this.thrustForceMultiplier *
+        this.hoverOffsetForce
+    );
   }
 
   protected useRaycast() {
-    if(!this.body) return;
+    if (!this.body) return;
     const startPos = this.body.position;
     this.ray.from.copy(startPos);
     this.ray.to.copy(startPos.vadd(this.downDir.scale(this.targetAltitude)));
@@ -89,9 +102,13 @@ class HoverShip extends DynamicObj {
     const raycastResult = new CANNON.RaycastResult();
     this.world.rayTest(this.ray.from, this.ray.to, raycastResult);
 
-    if(raycastResult.hasHit) {
+    if (raycastResult.hasHit) {
       const { distance } = raycastResult;
-      this.thrustForce.y = Math.abs(((distance - this.targetAltitude) * this.thrustForceMultiplier) * this.hoverOffsetForce);
+      this.thrustForce.y = Math.abs(
+        (distance - this.targetAltitude) *
+          this.thrustForceMultiplier *
+          this.hoverOffsetForce
+      );
     }
   }
 }

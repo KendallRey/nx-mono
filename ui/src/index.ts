@@ -10,3 +10,4 @@ export * from './filter/FilterSection';
 export * from './footer/Footer';
 export * from './banner/ImageBanner';
 export * from './three-cannon/TCScene';
+export * from './three-cannon/ModelDisplay';

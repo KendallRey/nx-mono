@@ -3,17 +3,25 @@ import { useEffect, useRef } from 'react';
 import * as THREE from 'three';
 import * as CANNON from 'cannon-es';
 import CannonDebugger from 'cannon-es-debugger';
-import { BlendFunction, DepthEffect, DepthOfFieldEffect, EffectComposer, EffectPass, RenderPass, SelectiveBloomEffect, TextureEffect } from 'postprocessing';
+import {
+  BlendFunction,
+  DepthEffect,
+  DepthOfFieldEffect,
+  EffectComposer,
+  EffectPass,
+  RenderPass,
+  SelectiveBloomEffect,
+  TextureEffect,
+} from 'postprocessing';
 import SpaceScene from '../classes/space-scene';
 
-
-const SpaceSceneComponent = () => {
+export const SpaceSceneComponent = () => {
   const mountRef = useRef(null);
 
   useEffect(() => {
     const width = window.innerWidth;
     const height = window.innerHeight;
-    if(!mountRef.current) return;
+    if (!mountRef.current) return;
     // Set up renderer
     const renderer = new THREE.WebGLRenderer({ canvas: mountRef.current });
     renderer.shadowMap.enabled = true;
@@ -21,7 +29,12 @@ const SpaceSceneComponent = () => {
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
     // Set up camera
-    const mainCamera = new THREE.PerspectiveCamera(75, width / height, 0.1, 2000);
+    const mainCamera = new THREE.PerspectiveCamera(
+      75,
+      width / height,
+      0.1,
+      2000
+    );
 
     // Set up world
     const world = new CANNON.World();
@@ -48,20 +61,20 @@ const SpaceSceneComponent = () => {
       focusDistance: 10,
       focalLength: 2,
       bokehScale: 0.2,
-      height: 480
+      height: 480,
     });
 
     const cocTextureEffect = new TextureEffect({
       blendFunction: BlendFunction.SKIP,
-      texture: depthOfFieldEffect.cocTexture
+      texture: depthOfFieldEffect.cocTexture,
     });
 
     const depthEffect = new DepthEffect({
-      blendFunction: BlendFunction.SKIP
+      blendFunction: BlendFunction.SKIP,
     });
 
     const effectPass = new EffectPass(
-      mainCamera,
+      mainCamera
       // effect,
       // depthOfFieldEffect,
       // depthEffect,
@@ -91,9 +104,9 @@ const SpaceSceneComponent = () => {
     };
   }, []);
 
-  return <div style={{ position: 'relative', width: '100%', height: '100vh' }}>
-  <canvas ref={mountRef} style={{ width: '100%', height: '100vh' }} />
-</div>;
+  return (
+    <div style={{ position: 'relative', width: '100%', height: '100vh' }}>
+      <canvas ref={mountRef} style={{ width: '100%', height: '100vh' }} />
+    </div>
+  );
 };
-
-export default SpaceSceneComponent;

@@ -1,5 +1,5 @@
 import * as THREE from 'three';
-import * as CANNON from 'cannon-es'
+import * as CANNON from 'cannon-es';
 
 // #region Types
 
@@ -24,20 +24,20 @@ export type CannonBodyOptions = {
   angularFactor?: CANNON.Vec3;
   shape?: CANNON.Shape;
   isTrigger?: boolean;
-}
+};
 
 export type Vector2 = {
   x: number;
   y: number;
-}
+};
 
 export type Vector3 = {
   x: number;
   y: number;
   z: number;
-}
+};
 
-export type Axis = 'x' | 'y' | 'z'
+export type Axis = 'x' | 'y' | 'z';
 
 type MaterialOptions = {
   color?: THREE.ColorRepresentation | undefined;
@@ -82,7 +82,7 @@ type MaterialOptions = {
   polygonOffset?: boolean | undefined;
   polygonOffsetFactor?: number | undefined;
   polygonOffsetUnits?: number | undefined;
-  precision?: "highp" | "mediump" | "lowp" | null | undefined;
+  precision?: 'highp' | 'mediump' | 'lowp' | null | undefined;
   premultipliedAlpha?: boolean | undefined;
   forceSinglePass?: boolean | undefined;
   dithering?: boolean | undefined;
@@ -101,82 +101,92 @@ type MaterialOptions = {
   stencilFail?: THREE.StencilOp | undefined;
   stencilZFail?: THREE.StencilOp | undefined;
   stencilZPass?: THREE.StencilOp | undefined;
-}
+};
 
 export type ThreeMeshOptions = {
   scale?: Vector3;
   position?: Vector3;
   materialProps?: MaterialOptions;
   bodyProps?: CannonBodyOptions;
-}
+};
 
 // #endregion
 
 export const getRandomFloat = (min: number, max: number) => {
   return Math.random() * (max - min) + min;
-}
+};
 
-export const ThreeVec3Add= (threeVec3: THREE.Vector3, vec3Like?: Vector3) => {
-  if(!vec3Like) return threeVec3;
+export const ThreeVec3Add = (threeVec3: THREE.Vector3, vec3Like?: Vector3) => {
+  if (!vec3Like) return threeVec3;
   return threeVec3.add(vec3Like);
-}
+};
 
 export const ThreeVec3ToCannonVec3 = (threeVec3: THREE.Vector3) => {
-  const { x, y, z, } = threeVec3;
+  const { x, y, z } = threeVec3;
   return new CANNON.Vec3(x, y, z);
-}
+};
 
-export const RotateInAxis = (mesh: THREE.Object3D<THREE.Object3DEventMap>, target: THREE.Vector3, axis: Axis) => {
-  
+export const RotateInAxis = (
+  mesh: THREE.Object3D<THREE.Object3DEventMap>,
+  target: THREE.Vector3,
+  axis: Axis
+) => {
   const direction = new THREE.Vector3();
   direction.subVectors(target, mesh.position);
 
   const angle = Math.atan2(direction.x, direction.z);
 
   mesh.rotation[axis] = angle;
-}
+};
 
 export const CannonVec3ToThreeVec3 = (cannonVec3: CANNON.Vec3) => {
-  const { x, y, z, } = cannonVec3;
+  const { x, y, z } = cannonVec3;
   return new THREE.Vector3(x, y, z);
-}
+};
 
-export const GetGroupDimensions = (group: THREE.Object3D<THREE.Object3DEventMap>): THREE.Vector3 => {
+export const GetGroupDimensions = (
+  group: THREE.Object3D<THREE.Object3DEventMap>
+): THREE.Vector3 => {
   const boundingBox = new THREE.Box3();
   boundingBox.setFromObject(group, true);
   return boundingBox.getSize(new THREE.Vector3());
-}
+};
 
-export const GetGroupDimensionsCenter = (group: THREE.Object3D<THREE.Object3DEventMap>): THREE.Vector3 => {
+export const GetGroupDimensionsCenter = (
+  group: THREE.Object3D<THREE.Object3DEventMap>
+): THREE.Vector3 => {
   const boundingBox = new THREE.Box3();
   boundingBox.setFromObject(group, true);
   const center = new THREE.Vector3();
   boundingBox.getCenter(center);
-  return center
-}
+  return center;
+};
 
 export const SetVectorRandom = (vector: Vector3) => {
   const x = getRandomFloat(vector.x * -1, vector.x);
   const y = getRandomFloat(vector.y * -1, vector.y);
   const z = getRandomFloat(vector.z * -1, vector.z);
   const offset = new THREE.Vector3(x, y, z);
-  return offset
-}
+  return offset;
+};
 
 export const SetVectorRandomC = (vector: Vector3) => {
   const x = getRandomFloat(vector.x * -1, vector.x);
   const y = getRandomFloat(vector.y * -1, vector.y);
   const z = getRandomFloat(vector.z * -1, vector.z);
   const offset = new CANNON.Vec3(x, y, z);
-  return offset
-}
+  return offset;
+};
 
-export const GetChildMeshesIncludeName = (mesh: THREE.Object3D<THREE.Object3DEventMap>, nameInclude: string) => {
+export const GetChildMeshesIncludeName = (
+  mesh: THREE.Object3D<THREE.Object3DEventMap>,
+  nameInclude: string
+) => {
   const meshes: THREE.Object3D<THREE.Object3DEventMap>[] = [];
-  mesh.traverse(child => {
+  mesh.traverse((child) => {
     if ((child as THREE.Mesh).isMesh && child.name.includes(nameInclude)) {
       meshes.push(child);
     }
   });
   return meshes;
-}
+};

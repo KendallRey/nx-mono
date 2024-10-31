@@ -1,16 +1,20 @@
 import * as THREE from 'three';
-import * as CANNON from 'cannon-es'
-import Effect from "./effects";
+import * as CANNON from 'cannon-es';
+import Effect from './effects';
 import { ThreeVec3ToCannonVec3 } from './helper';
 
 class ExplosionField extends Effect {
-
   private position: CANNON.Vec3;
   private world: CANNON.World;
   private radius: number;
   private body?: CANNON.Body;
 
-  constructor(world: CANNON.World, position: THREE.Vector3, radius: number, life: number) {
+  constructor(
+    world: CANNON.World,
+    position: THREE.Vector3,
+    radius: number,
+    life: number
+  ) {
     super(life);
     this.world = world;
     this.radius = radius;
@@ -18,7 +22,7 @@ class ExplosionField extends Effect {
     this.init();
   }
 
-  private init(){
+  private init() {
     const shape = new CANNON.Sphere(this.radius);
     this.body = new CANNON.Body({ mass: 0, shape });
     this.body.position = this.position;
@@ -27,11 +31,11 @@ class ExplosionField extends Effect {
 
   updateEffect() {
     const doUpdate = this.update();
-    if(!doUpdate) {
+    if (!doUpdate) {
       this.world.removeBody(this.body!);
       return;
     }
   }
 }
 
-export default ExplosionField
+export default ExplosionField;

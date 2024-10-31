@@ -14,7 +14,6 @@ import { IDestroyable } from './interface/killable';
 // import FBXObj from './fbx-obj';
 
 class SpaceScene extends THREE.Scene {
-
   private readonly camera: THREE.PerspectiveCamera;
   private readonly cameraContainer = new THREE.Group();
   private readonly clock = new THREE.Clock();
@@ -30,8 +29,13 @@ class SpaceScene extends THREE.Scene {
   // private groundMesh?: THREE.Mesh;
   private world: CANNON.World;
 
-  constructor(camera: THREE.PerspectiveCamera, world: CANNON.World, screenX: number, screenY: number) {
-    super()
+  constructor(
+    camera: THREE.PerspectiveCamera,
+    world: CANNON.World,
+    screenX: number,
+    screenY: number
+  ) {
+    super();
     this.world = world;
     this.camera = camera;
     this.camera.layers.enable(1);
@@ -40,7 +44,6 @@ class SpaceScene extends THREE.Scene {
   }
 
   async init() {
-
     await this.loadTextures();
     this.initGround();
     // this.initBGStarts(10000);
@@ -54,7 +57,7 @@ class SpaceScene extends THREE.Scene {
   }
 
   private initScreenSize(x: number, y: number) {
-    console.log(`X:${x}, Y:${y}`)
+    console.log(`X:${x}, Y:${y}`);
     // this.screenSize  = new THREE.Vector2(x, y);
   }
 
@@ -66,7 +69,6 @@ class SpaceScene extends THREE.Scene {
   private initGround() {
     new Ground(this, this.world, 2000, 2000);
   }
-
 
   private initLighting() {
     // const pointLight = new THREE.PointLight(0xffffff, 100);
@@ -85,7 +87,7 @@ class SpaceScene extends THREE.Scene {
     // directionalLight.shadow.camera.far = 10;
     // directionalLight.shadow.camera.near = -50;
     this.add(directionalLight);
-    
+
     // this.add(new THREE.CameraHelper(directionalLight.shadow.camera))
   }
 
@@ -96,9 +98,9 @@ class SpaceScene extends THREE.Scene {
     this.camera.position.x = 2;
     this.camera.position.y = 4;
     this.camera.position.z = -2;
-    this.camera.rotateX(Math.PI * -.7);
-    this.camera.rotateY(Math.PI * .15);
-    this.camera.rotateZ(Math.PI * .85);
+    this.camera.rotateX(Math.PI * -0.7);
+    this.camera.rotateY(Math.PI * 0.15);
+    this.camera.rotateZ(Math.PI * 0.85);
 
     this.camera.getWorldPosition(this.currentCameraPosition);
     this.camera.getWorldQuaternion(this.currentCameraRotation);
@@ -134,16 +136,30 @@ class SpaceScene extends THREE.Scene {
   private effects: Effect[] = [];
 
   private test() {
-
-    const xAxis = new THREE.ArrowHelper(new THREE.Vector3(1, 0, 0), new THREE.Vector3(0,0.5,0), 50, 0xff0000);
-    const yAxis = new THREE.ArrowHelper(new THREE.Vector3(0, 1, 0), new THREE.Vector3(0,0.5,0), 50, 0x00ff00);
-    const zAxis = new THREE.ArrowHelper(new THREE.Vector3(0, 0, 1), new THREE.Vector3(0,0.5,0), 50, 0x0000ff);
+    const xAxis = new THREE.ArrowHelper(
+      new THREE.Vector3(1, 0, 0),
+      new THREE.Vector3(0, 0.5, 0),
+      50,
+      0xff0000
+    );
+    const yAxis = new THREE.ArrowHelper(
+      new THREE.Vector3(0, 1, 0),
+      new THREE.Vector3(0, 0.5, 0),
+      50,
+      0x00ff00
+    );
+    const zAxis = new THREE.ArrowHelper(
+      new THREE.Vector3(0, 0, 1),
+      new THREE.Vector3(0, 0.5, 0),
+      50,
+      0x0000ff
+    );
 
     this.add(xAxis);
     this.add(yAxis);
     this.add(zAxis);
 
-    const geometry = new THREE.BoxGeometry( .1, .1, 1);
+    const geometry = new THREE.BoxGeometry(0.1, 0.1, 1);
     const material = new THREE.MeshBasicMaterial();
 
     this.testMesh = new THREE.Mesh(geometry, material);
@@ -151,18 +167,15 @@ class SpaceScene extends THREE.Scene {
     this.add(this.testMesh);
   }
 
-
   private initListeners() {
     document.addEventListener('mousemove', (ev) => {
-
       this.mousePosition.x = (ev.clientX / window.innerWidth) * 2 - 1;
       this.mousePosition.y = -(ev.clientY / window.innerHeight) * 2 + 1;
-      
-    })
+    });
 
     document.addEventListener('mouseup', () => {
-      this.spaceShip?.fireTurret(this.targetPosition, this.effects)
-    })
+      this.spaceShip?.fireTurret(this.targetPosition, this.effects);
+    });
   }
 
   // private spawnParticle(origin: THREE.Vector3, target: THREE.Vector3) {
@@ -180,31 +193,35 @@ class SpaceScene extends THREE.Scene {
 
   private async spawnPlayer() {
     this.spaceShip = new SpaceShip(this, this.world);
-    await this.spaceShip.init(0.2, new THREE.Vector3(0, 20, 0), 'assets/three-js');
+    await this.spaceShip.init(
+      0.2,
+      new THREE.Vector3(0, 20, 0),
+      'assets/three-js'
+    );
     this.spaceShipMesh = this.spaceShip.getMesh();
 
-    if(this.spaceShipMesh?.position)
+    if (this.spaceShipMesh?.position)
       this.cameraContainer.position.copy(this.spaceShipMesh.position);
 
     this.spaceShip.initController();
     const objMesh = this.spaceShip.getMesh();
-    if(!objMesh) return;
+    if (!objMesh) return;
 
-    const pointLight = new THREE.PointLight(0x55EFC4, 200);
+    const pointLight = new THREE.PointLight(0x55efc4, 200);
     pointLight.position.x = 0;
     pointLight.position.y = 0;
     pointLight.position.z = 70;
-    pointLight.castShadow= true;
+    pointLight.castShadow = true;
     objMesh.add(pointLight);
-    
+
     this.add(objMesh);
 
     this.objs.push(this.spaceShip);
 
     this.cameraContainer.add(this.camera);
 
-    const { x: xPos, y: yPos , z: zPos } = this.currentCameraPosition;
-    const { x: xRot, y: yRot , z: zRot, w } = this.currentCameraRotation;
+    const { x: xPos, y: yPos, z: zPos } = this.currentCameraPosition;
+    const { x: xRot, y: yRot, z: zRot, w } = this.currentCameraRotation;
 
     this.camera.position.set(xPos * 15, yPos * 15, zPos * 15);
     this.camera.quaternion.set(xRot, yRot, zRot, w);
@@ -219,7 +236,6 @@ class SpaceScene extends THREE.Scene {
   // #endregion
 
   private async initObjects() {
-
     // await spawnLogo({ scene: this, world: this.world, objs: this.objs, position: { x: 20, y: 0, z: 2} });
     // const k2 = new FBXObj(this, this.world, 'assets/letters/lower/z');
     // await k2.init(new THREE.Vector3(0, 5, 0), { bodyProps: { mass: 200 }})
@@ -228,11 +244,10 @@ class SpaceScene extends THREE.Scene {
     // const spawner = new Spawner(this, this.world, { x: 5, y: 5});
     // spawner.init();
     // this.objs.push(...spawner.objs);
-
     // this.spawnMob();
   }
 
-  // #region Hover Ships 
+  // #region Hover Ships
 
   private hoverShips: HoverShip[] = [];
 
@@ -241,19 +256,18 @@ class SpaceScene extends THREE.Scene {
   // #region Mobs
 
   async spawnMob() {
-    if(!this.spaceShip) return;
+    if (!this.spaceShip) return;
     const mob = new Mob(this, this.world);
     await mob.init(0.2, new THREE.Vector3(20, 20, 20), 'assets/mob');
     const playerBody = this.spaceShip.getBody();
-    if(playerBody)
-      mob.setTarget(playerBody)
+    if (playerBody) mob.setTarget(playerBody);
     this.objs.push(mob);
     this.hoverShips.push(mob);
   }
 
   // #endregion
 
-  update(){
+  update() {
     const elapsedTime = this.clock.getElapsedTime();
 
     this.updateBGStars(elapsedTime);
@@ -262,32 +276,35 @@ class SpaceScene extends THREE.Scene {
     this.spaceShip?.updateTurrets(this.targetPosition);
     this.spaceShip?.updateMovement();
 
-    this.hoverShips.forEach((ship) => ship.updateMovement())
+    this.hoverShips.forEach((ship) => ship.updateMovement());
 
     this.updateCamera();
 
-    this.objs.forEach((obj) => obj.update())
-    this.effects.forEach((obj) => obj.updateEffect())
+    this.objs.forEach((obj) => obj.update());
+    this.effects.forEach((obj) => obj.updateEffect());
     this.effects = this.garbageCollection(this.effects);
   }
 
   private lerpFactor = 0.1;
 
   private updateCamera() {
-    if(!this.spaceShipMesh) return;
-    this.cameraContainer.position.lerp(this.spaceShipMesh.position, this.lerpFactor);
+    if (!this.spaceShipMesh) return;
+    this.cameraContainer.position.lerp(
+      this.spaceShipMesh.position,
+      this.lerpFactor
+    );
   }
 
   private updateBGStars(time: number) {
-    if(!this.particlesMesh) return;
-    this.particlesMesh.rotation.y = (time * 0.008);
-    this.particlesMesh.rotation.x = (time * 0.008);
+    if (!this.particlesMesh) return;
+    this.particlesMesh.rotation.y = time * 0.008;
+    this.particlesMesh.rotation.x = time * 0.008;
   }
 
   private updateRaycast() {
     this.raycaster.setFromCamera(this.mousePosition, this.camera);
     const intersects = this.raycaster.intersectObjects(this.children);
-    if(intersects.length > 0){
+    if (intersects.length > 0) {
       const obj = intersects[0];
       this.targetPosition.copy(obj.point);
     }

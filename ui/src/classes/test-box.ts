@@ -1,12 +1,16 @@
 import * as THREE from 'three';
-import * as CANNON from 'cannon-es'
+import * as CANNON from 'cannon-es';
 import DynamicObj from './dynamic-obj';
 import { ThreeVec3ToCannonVec3 } from './helper';
 
 class TestBox extends DynamicObj {
-
-  constructor(scene: THREE.Scene, world: CANNON.World, position: THREE.Vector3, size: number) {
-    super(scene, world)
+  constructor(
+    scene: THREE.Scene,
+    world: CANNON.World,
+    position: THREE.Vector3,
+    size: number
+  ) {
+    super(scene, world);
 
     const geometry = new THREE.BoxGeometry(size, size, size);
     const material = new THREE.MeshPhongMaterial({ color: 0xff0000 });
@@ -22,7 +26,6 @@ class TestBox extends DynamicObj {
 
     this.setObj(mesh, body);
   }
-
 }
 
 export default TestBox;

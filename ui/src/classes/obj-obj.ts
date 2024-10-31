@@ -1,24 +1,22 @@
 import * as THREE from 'three';
-import * as CANNON from 'cannon-es'
-import { MTLLoader } from "three/examples/jsm/loaders/MTLLoader.js";
-import DynamicObj from "./dynamic-obj"
-import { OBJLoader } from "three/examples/jsm/loaders/OBJLoader.js";
+import * as CANNON from 'cannon-es';
+import { MTLLoader } from 'three/examples/jsm/loaders/MTLLoader.js';
+import DynamicObj from './dynamic-obj';
+import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader.js';
 import { ThreeMeshOptions, ThreeVec3ToCannonVec3 } from './helper';
 
 class OBJObj extends DynamicObj {
-
   private readonly mtlLoader = new MTLLoader();
   private readonly objLoader = new OBJLoader();
 
-  private url: string
+  private url: string;
 
-  constructor(scene: THREE.Scene, world: CANNON.World, url: string){
+  constructor(scene: THREE.Scene, world: CANNON.World, url: string) {
     super(scene, world);
     this.url = url;
   }
 
-
-  async init(position: THREE.Vector3, options?: ThreeMeshOptions){
+  async init(position: THREE.Vector3, options?: ThreeMeshOptions) {
     const objMtl = await this.mtlLoader.loadAsync(`${this.url}.mtl`);
     objMtl.preload();
 
@@ -38,4 +36,4 @@ class OBJObj extends DynamicObj {
   }
 }
 
-export default OBJObj
+export default OBJObj;

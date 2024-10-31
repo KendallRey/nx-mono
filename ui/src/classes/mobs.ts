@@ -1,9 +1,8 @@
 import * as CANNON from 'cannon-es';
-import HoverShip from "./hover-ship";
+import HoverShip from './hover-ship';
 import { IEnemy } from './interface/enemy';
 
 class Mob extends HoverShip implements IEnemy {
-  
   health = 100;
   currentHealth = 100;
   private targetRb?: CANNON.Body;
@@ -14,11 +13,10 @@ class Mob extends HoverShip implements IEnemy {
   }
 
   updateMovement() {
-    if(!this.body) return;
+    if (!this.body) return;
     this.updateThrust();
-    if(this.targetRb)
-      this.setSteer(this.targetRb, this.body);
-    this.body.applyLocalForce(this.thrustForce, new CANNON.Vec3(0,0,0));
+    if (this.targetRb) this.setSteer(this.targetRb, this.body);
+    this.body.applyLocalForce(this.thrustForce, new CANNON.Vec3(0, 0, 0));
     this.body.applyTorque(this.steeringForce);
   }
 
@@ -32,14 +30,15 @@ class Mob extends HoverShip implements IEnemy {
     direction.y = 0;
     direction.normalize();
 
-    const forward = new CANNON.Vec3(0,0,1);
+    const forward = new CANNON.Vec3(0, 0, 1);
     const targetQuaternion = new CANNON.Quaternion();
     targetQuaternion.setFromVectors(forward, direction);
 
-    const interpolatedQuaternion = new CANNON.Quaternion().copy(body.quaternion).slerp(targetQuaternion, 1);
+    const interpolatedQuaternion = new CANNON.Quaternion()
+      .copy(body.quaternion)
+      .slerp(targetQuaternion, 1);
 
     body.quaternion.copy(interpolatedQuaternion);
-
   }
 }
 

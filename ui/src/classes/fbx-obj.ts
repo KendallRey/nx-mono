@@ -1,21 +1,19 @@
 import * as THREE from 'three';
-import * as CANNON from 'cannon-es'
-import { FBXLoader } from "three/examples/jsm/loaders/FBXLoader.js";
-import DynamicObj from "./dynamic-obj";
+import * as CANNON from 'cannon-es';
+import { FBXLoader } from 'three/examples/jsm/loaders/FBXLoader.js';
+import DynamicObj from './dynamic-obj';
 import { ThreeMeshOptions, ThreeVec3ToCannonVec3 } from './helper';
 
 class FBXObj extends DynamicObj {
-
   private loader = new FBXLoader();
-  private url: string
+  private url: string;
 
-  constructor (scene: THREE.Scene, world: CANNON.World, url: string) {
+  constructor(scene: THREE.Scene, world: CANNON.World, url: string) {
     super(scene, world);
     this.url = url;
   }
 
   async init(position: THREE.Vector3, options?: ThreeMeshOptions) {
-
     this.mesh = await this.loader.loadAsync(`${this.url}.fbx`);
     this.mesh.position.copy(position);
     this.applyMaterial(this.mesh as THREE.Group<THREE.Object3DEventMap>);
@@ -31,7 +29,7 @@ class FBXObj extends DynamicObj {
 
   private applyMaterial(mesh: THREE.Group<THREE.Object3DEventMap>) {
     mesh.children.forEach((child) => {
-      if(child instanceof THREE.Mesh) {
+      if (child instanceof THREE.Mesh) {
         if (child.material) {
           // Apply the material to the mesh
           // Here you can modify the material properties if needed
@@ -42,16 +40,15 @@ class FBXObj extends DynamicObj {
             // emissiveIntensity: 10,
             // opacity: 1,
             blending: THREE.AdditiveBlending,
-            
           });
           child.material = material;
-      } else {
+        } else {
           const material = new THREE.MeshStandardMaterial({ color: 0xff0000 });
           child.material = material;
+        }
       }
-      }
-    })
+    });
   }
 }
 
-export default FBXObj
+export default FBXObj;

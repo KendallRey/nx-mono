@@ -2,7 +2,6 @@ import * as THREE from 'three';
 import { GetChildMeshesIncludeName } from './helper';
 
 class Turret {
-
   public readonly gunMeshes: THREE.Object3D<THREE.Object3DEventMap>[] = [];
   public readonly mesh: THREE.Object3D<THREE.Object3DEventMap>;
 
@@ -22,4 +21,4 @@ class Turret {
   }
 }
 
-export default Turret
+export default Turret;
