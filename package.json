@@ -18,6 +18,15 @@
     "@types/react-dom": "18.3.0"
   },
   "dependencies": {
+    "@react-three/cannon": "^6.6.0",
+    "@react-three/fiber": "^8.16.3",
+    "@types/cannon": "^0.1.12",
+    "cannon": "^0.6.2",
+    "cannon-es": "^0.20.0",
+    "cannon-es-debugger": "^1.0.0",
+    "postprocessing": "^6.35.3",
+    "three": "^0.163.0",
+    "three-to-cannon": "^5.0.1",
     "@emotion/react": "^11.13.3",
     "@emotion/styled": "^11.13.0",
     "@mui/material": "^6.1.0",

@@ -3,6 +3,7 @@
 import { RMarkdownEditor, MuiBox, MuiStack, MuiTypography } from "@nx-next-js-micro/components";
 import { ImageBanner } from "@nx-next-js-micro/ui";
 import { useState } from "react";
+import SpaceSceneComponent from "ui/src/three-cannon/TCScene";
 
 export default function HomePage() {
 
@@ -20,6 +21,7 @@ export default function HomePage() {
       <MuiBox>1</MuiBox>
       <MuiBox>2</MuiBox>
       <MuiBox>3</MuiBox>
+      <SpaceSceneComponent/>
     </MuiBox>
   );
 }
