@@ -1,16 +1,11 @@
-import {
-  useGLTF,
-  PresentationControls,
-  Stage,
-  useAnimations,
-} from '@react-three/drei';
+import { useGLTF } from '@react-three/drei';
 import {
   PrimitiveProps,
   useFrame,
   Canvas,
   CanvasProps,
 } from '@react-three/fiber';
-import { useEffect, useRef } from 'react';
+import { useEffect, useLayoutEffect, useRef } from 'react';
 import * as THREE from 'three';
 
 type ModelType = {
@@ -23,6 +18,16 @@ export const ModelDisplay = ({ path, props }: ModelType) => {
 
   const mixer = useRef<THREE.AnimationMixer>();
   const actions = useRef<THREE.AnimationAction[]>([]);
+
+  useLayoutEffect(() => {
+    scene.traverse((obj) => {
+      if ((obj as THREE.Mesh).isMesh) {
+        const mesh = obj as THREE.Mesh;
+        mesh.receiveShadow = true;
+        mesh.castShadow = true;
+      }
+    });
+  }, [scene]);
 
   useEffect(() => {
     mixer.current = new THREE.AnimationMixer(scene);
@@ -39,23 +44,12 @@ export const ModelDisplay = ({ path, props }: ModelType) => {
     };
   }, [scene, animations]);
 
-  useFrame((state, delta) => {
+  useFrame((_, delta) => {
     if (!mixer.current) return;
     mixer.current.update(delta);
   });
 
-  return (
-    <PresentationControls
-      global
-      zoom={0.7}
-      polar={[-1, Math.PI / 4]}
-      speed={1.5}
-    >
-      <Stage shadows={false} environment={'city'}>
-        <primitive object={scene} {...props} />
-      </Stage>
-    </PresentationControls>
-  );
+  return <primitive object={scene} {...props} />;
 };
 
 type ITFCanvas = CanvasProps;
