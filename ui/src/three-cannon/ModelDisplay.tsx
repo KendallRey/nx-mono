@@ -10,7 +10,7 @@ import * as THREE from 'three';
 
 type ModelType = {
   path: string;
-  props: Omit<PrimitiveProps, 'object'>;
+  props?: Omit<PrimitiveProps, 'object'>;
 };
 
 export const ModelDisplay = ({ path, props }: ModelType) => {
