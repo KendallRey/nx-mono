@@ -13,6 +13,8 @@ export type IRoute = {
   name: string;
   href: string;
   icon?: React.ReactNode;
+  activeClassName?: string;
+  className?: string;
 };
 
 export type IApiProps = {
