@@ -1,25 +1,38 @@
 'use client';
 
-import {
-  IRoute,
-  MuiBox,
-  MuiButton,
-  MuiPaper,
-  MuiTypography,
-} from '@nx-next-js-micro/components';
+import { IRoute, MuiBox, MuiTypography } from '@nx-next-js-micro/components';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import React, { useCallback } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 
 type IFixedNavigation = {
   logo?: React.ReactNode;
   routes: IRoute[];
-} & React.ComponentProps<'nav'>;
+  linkClassName?: string;
+  activeClassName?: string;
+  className?: string;
+};
 
 export const FixedNavigation: React.FC<IFixedNavigation> = (props) => {
-  const { logo, routes, className, ...otherProps } = props;
+  const {
+    logo,
+    routes,
+    className,
+    activeClassName,
+    linkClassName,
+    ...otherProps
+  } = props;
 
   const pathname = usePathname();
+
+  const [isTop, setIsTop] = useState(window.scrollY === 0);
+
+  useEffect(() => {
+    const handleScroll = () => setIsTop(window.scrollY === 0);
+    window.addEventListener('scroll', handleScroll);
+    handleScroll();
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const isActiveLink = useCallback(
     (link: string) => {
@@ -31,10 +44,13 @@ export const FixedNavigation: React.FC<IFixedNavigation> = (props) => {
   );
 
   return (
-    <nav
+    <MuiBox
       className={`fixed z-[1200] p-4 gap-4 top-0 left-0 right-0 flex ${
         logo ? 'justify-between' : 'justify-end'
-      } ${className || ''} bg-neutral-900 bg-opacity-30`}
+      } ${className || ''} ${isTop ? '' : 'bg-neutral-900'} bg-opacity-30`}
+      style={{
+        transition: 'background 0.3s ease',
+      }}
       {...otherProps}
     >
       {logo}
@@ -47,8 +63,10 @@ export const FixedNavigation: React.FC<IFixedNavigation> = (props) => {
               href={route.href}
               className={`${
                 active
-                  ? `${route.activeClassName || 'text-black'}`
-                  : `${route.className || 'text-white'}`
+                  ? `${activeClassName || ''} ${
+                      route.activeClassName || 'text-black'
+                    }`
+                  : `${linkClassName || ''} ${route.className || 'text-white'}`
               }`}
             >
               <MuiTypography fontSize={18}>{route.name}</MuiTypography>
@@ -56,6 +74,6 @@ export const FixedNavigation: React.FC<IFixedNavigation> = (props) => {
           );
         })}
       </div>
-    </nav>
+    </MuiBox>
   );
 };
