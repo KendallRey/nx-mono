@@ -45,34 +45,42 @@ export const FixedNavigation: React.FC<IFixedNavigation> = (props) => {
 
   return (
     <MuiBox
-      className={`fixed z-[1200] p-4 gap-4 top-0 left-0 right-0 flex ${
-        logo ? 'justify-between' : 'justify-end'
-      } ${className || ''} ${isTop ? '' : 'bg-neutral-900'} bg-opacity-30`}
+      className={`fixed z-[1200] top-0 left-0 right-0 ${
+        isTop ? '' : 'bg-neutral-900'
+      } bg-opacity-30`}
       style={{
         transition: 'background 0.3s ease',
       }}
-      {...otherProps}
     >
-      {logo}
-      <div className="flex items-center gap-12">
-        {routes.map((route) => {
-          const active = isActiveLink(route.href);
-          return (
-            <Link
-              key={route.href}
-              href={route.href}
-              className={`${
-                active
-                  ? `${activeClassName || ''} ${
-                      route.activeClassName || 'text-black'
-                    }`
-                  : `${linkClassName || ''} ${route.className || 'text-white'}`
-              }`}
-            >
-              <MuiTypography fontSize={18}>{route.name}</MuiTypography>
-            </Link>
-          );
-        })}
+      <div
+        className={`p-4 gap-4 flex ${
+          logo ? 'justify-between' : 'justify-end'
+        } ${className || ''}`}
+        {...otherProps}
+      >
+        {logo}
+        <div className="flex items-center gap-12">
+          {routes.map((route) => {
+            const active = isActiveLink(route.href);
+            return (
+              <Link
+                key={route.href}
+                href={route.href}
+                className={`${
+                  active
+                    ? `${activeClassName || ''} ${
+                        route.activeClassName || 'text-black'
+                      }`
+                    : `${linkClassName || ''} ${
+                        route.className || 'text-white'
+                      }`
+                }`}
+              >
+                <MuiTypography fontSize={18}>{route.name}</MuiTypography>
+              </Link>
+            );
+          })}
+        </div>
       </div>
     </MuiBox>
   );
