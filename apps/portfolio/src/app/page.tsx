@@ -17,11 +17,16 @@ import {
   RandomizedLight,
   useGLTF,
 } from '@react-three/drei';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { RepeatWrapping, Vector2 } from 'three';
+
+const videoSize = new Vector2(21,21)
+const videoOffset = new Vector2(-0.3,0.1)
 
 export default function HomePage() {
   const [value, setValue] = useState<string | undefined>('');
-
+  const [video] = useState(() => Object.assign(document.createElement('video'), { src: 'assets/pc/passes.mp4', crossOrigin: 'Anonymous', loop: true, muted: true }))
+  useEffect(() => void video.play(), [video])
   const { nodes } = useGLTF('assets/pc/home_pc_test_3.1.glb')
   console.log('nodes', nodes.monitor_1001)
   return (
@@ -57,9 +62,18 @@ export default function HomePage() {
           props={{
           }}
         />
-        <mesh geometry={nodes.monitor_1001.geometry} material={nodes.monitor_1001.material}
+        <mesh geometry={nodes.monitor_1001.geometry}
           position={nodes.monitor_1001.position}
-          rotation={nodes.monitor_1001.rotation}/>
+          rotation={nodes.monitor_1001.rotation}>
+          <meshBasicMaterial toneMapped={false}>
+            <videoTexture attach="map" args={[video]}
+            repeat={videoSize}
+            offset={videoOffset}
+            rotation={Math.PI / 2}
+            wrapS={RepeatWrapping}
+            wrapT={RepeatWrapping}/>
+          </meshBasicMaterial>
+          </mesh>
         </group>
         {/* <AccumulativeShadows
           temporal
