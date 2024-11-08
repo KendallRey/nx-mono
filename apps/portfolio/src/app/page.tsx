@@ -10,17 +10,23 @@ import { ImageBanner, ModelDisplay, TFCanvas } from '@nx-next-js-micro/ui';
 import {
   AccumulativeShadows,
   Backdrop,
+  CameraControls,
   Environment,
+  Fisheye,
+  PerspectiveCamera,
   RandomizedLight,
+  useGLTF,
 } from '@react-three/drei';
 import { useState } from 'react';
 
 export default function HomePage() {
   const [value, setValue] = useState<string | undefined>('');
 
+  const { nodes } = useGLTF('assets/pc/home_pc_test_3.1.glb')
+  console.log('nodes', nodes.monitor_1001)
   return (
     <MuiBox className="h-screen">
-      <ImageBanner
+      {/* <ImageBanner
         imageUrl="/images/banner_2.png"
         className="grid items-center justify-center"
       >
@@ -38,18 +44,24 @@ export default function HomePage() {
         onChange={setValue}
         visible
         height="500px"
-      />
-      <TFCanvas
-        shadows
-        camera={{ position: [15, 15, 5], fov: 25, near: 1, far: 100 }}
+      /> */}
+      <TFCanvas flat
+        // camera={{ position: [15, 25, 15], fov: 45, near: 1, far: 100 }}
       >
+      <Fisheye zoom={0}>
+      <CameraControls minPolarAngle={0} maxPolarAngle={Math.PI / 1.6} />
+        <ambientLight intensity={Math.PI / 2} />
+        <group>
         <ModelDisplay
-          path="assets/pc/home_pc_test_1.glb"
+          path="assets/pc/home_pc_test_3.glb"
           props={{
-            position: [1, 1.7, 1],
           }}
         />
-        <AccumulativeShadows
+        <mesh geometry={nodes.monitor_1001.geometry} material={nodes.monitor_1001.material}
+          position={nodes.monitor_1001.position}
+          rotation={nodes.monitor_1001.rotation}/>
+        </group>
+        {/* <AccumulativeShadows
           temporal
           frames={100}
           color="#171720"
@@ -67,16 +79,18 @@ export default function HomePage() {
             position={[5, 5, -10]}
             bias={0.001}
           />
-        </AccumulativeShadows>
-        <Backdrop
+        </AccumulativeShadows> */}
+        {/* <Backdrop
           receiveShadow
           scale={[30, 10, 10]}
           floor={6}
           position={[-10, -10, -10]}
         >
           <meshPhysicalMaterial roughness={1} color="#efefef" />
-        </Backdrop>
-        <Environment preset="city" />
+        </Backdrop> */}
+        <Environment preset="city" blur={1} />
+        <PerspectiveCamera makeDefault position={[0, 0, 18.5]} />
+        </Fisheye>
       </TFCanvas>
     </MuiBox>
   );

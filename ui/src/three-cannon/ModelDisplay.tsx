@@ -15,7 +15,6 @@ type ModelType = {
 
 export const ModelDisplay = ({ path, props }: ModelType) => {
   const { scene, animations } = useGLTF(path);
-
   const mixer = useRef<THREE.AnimationMixer>();
   const actions = useRef<THREE.AnimationAction[]>([]);
 
@@ -23,8 +22,8 @@ export const ModelDisplay = ({ path, props }: ModelType) => {
     scene.traverse((obj) => {
       if ((obj as THREE.Mesh).isMesh) {
         const mesh = obj as THREE.Mesh;
-        mesh.receiveShadow = true;
-        mesh.castShadow = true;
+        // mesh.receiveShadow = true;
+        // mesh.castShadow = true;
       }
     });
   }, [scene]);
