@@ -12,6 +12,7 @@ import {
   Vec3 as CVec3,
   Trimesh as CTrimesh,
   ConvexPolyhedron as CConvexPolyhedron,
+  Shape,
 } from 'cannon-es';
 import { threeToCannon, ShapeType } from 'three-to-cannon';
 import {
@@ -126,8 +127,9 @@ abstract class DynamicObj {
   }
 
   protected useTTCConvexShape(mesh: MeshType, options?: CannonBodyOptions) {
-    const result = threeToCannon(mesh, { type: ShapeType.HULL });
-    const { shape } = result;
+    // const result = threeToCannon(mesh, { type: ShapeType.HULL });
+    // const { shape } = result;
+    const shape = new Shape();
     const body = new CBody({ mass: 100, shape: shape, ...options });
     return body;
   }
