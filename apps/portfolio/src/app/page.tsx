@@ -1,82 +1,105 @@
 'use client';
 
 import {
-  RMarkdownEditor,
   MuiBox,
-  MuiStack,
-  MuiTypography,
+  useAppGLTF,
+  useVideoTexture,
 } from '@nx-next-js-micro/components';
-import { ImageBanner, ModelDisplay, TFCanvas } from '@nx-next-js-micro/ui';
+import { ModelDisplay, TFCanvas } from '@nx-next-js-micro/ui';
 import {
-  AccumulativeShadows,
-  Backdrop,
+  CameraControls,
   Environment,
-  RandomizedLight,
+  Fisheye,
+  PerspectiveCamera,
 } from '@react-three/drei';
-import { useState } from 'react';
+import { RepeatWrapping, Vector2 } from 'three';
+
+type ScreenModelNames = 'screen_1' | 'screen_2' | 'screen_3' | 'screen_4';
+
+const screenSize = new Vector2(1, -1.9);
 
 export default function HomePage() {
-  const [value, setValue] = useState<string | undefined>('');
+  const { nodes } = useAppGLTF<ScreenModelNames>(
+    'assets/pc/home_pc_test_4_pc_screens.glb'
+  );
+
+  const swordFastForward = useVideoTexture('assets/pc/sword_fast.mp4');
+  const code = useVideoTexture('assets/pc/code.mp4');
+  const unity = useVideoTexture('assets/pc/unity.mp4');
+  const starrail = useVideoTexture('assets/pc/starrail.mp4');
 
   return (
     <MuiBox className="h-screen">
-      <ImageBanner
-        imageUrl="/images/banner_2.png"
-        className="grid items-center justify-center"
-      >
-        <MuiStack>
-          <MuiTypography color="white" fontSize={32}>
-            Hello there,
-          </MuiTypography>
-          <MuiTypography color="white" fontSize={42}>
-            KR here.
-          </MuiTypography>
-        </MuiStack>
-      </ImageBanner>
-      <RMarkdownEditor
-        value={value}
-        onChange={setValue}
-        visible
-        height="500px"
-      />
-      <TFCanvas
-        shadows
-        camera={{ position: [15, 15, 5], fov: 25, near: 1, far: 100 }}
-      >
-        <ModelDisplay
-          path="assets/pc/home_pc_test_1.glb"
-          props={{
-            position: [1, 1.7, 1],
-          }}
-        />
-        <AccumulativeShadows
-          temporal
-          frames={100}
-          color="#171720"
-          colorBlend={2}
-          toneMapped={true}
-          alphaTest={0.75}
-          opacity={1}
-          scale={18}
-        >
-          <RandomizedLight
-            intensity={Math.PI}
-            amount={8}
-            radius={4}
-            ambient={0.5}
-            position={[5, 5, -10]}
-            bias={0.001}
-          />
-        </AccumulativeShadows>
-        <Backdrop
-          receiveShadow
-          scale={[30, 10, 10]}
-          floor={6}
-          position={[-10, -10, -10]}
-        >
-          <meshPhysicalMaterial roughness={1} color="#efefef" />
-        </Backdrop>
-        <Environment preset="city" />
+      <TFCanvas flat>
+        <Fisheye zoom={0}>
+          <CameraControls minPolarAngle={0} maxPolarAngle={Math.PI / 1.6} />
+          <ambientLight intensity={Math.PI / 2} />
+          <group>
+            <ModelDisplay path="assets/pc/home_pc_test_4.glb" props={{}} />
+            <mesh
+              geometry={nodes.screen_1.geometry}
+              position={nodes.screen_1.position}
+              rotation={nodes.screen_1.rotation}
+            >
+              <meshBasicMaterial toneMapped={false}>
+                <videoTexture
+                  attach="map"
+                  args={[code]}
+                  repeat={screenSize}
+                  wrapS={RepeatWrapping}
+                  wrapT={RepeatWrapping}
+                />
+              </meshBasicMaterial>
+            </mesh>
+            <mesh
+              geometry={nodes.screen_2.geometry}
+              position={nodes.screen_2.position}
+              rotation={nodes.screen_2.rotation}
+            >
+              <meshBasicMaterial toneMapped={false}>
+                <videoTexture
+                  attach="map"
+                  args={[swordFastForward]}
+                  repeat={screenSize}
+                  wrapS={RepeatWrapping}
+                  wrapT={RepeatWrapping}
+                />
+              </meshBasicMaterial>
+            </mesh>
+            <mesh
+              geometry={nodes.screen_3.geometry}
+              position={nodes.screen_3.position}
+              rotation={nodes.screen_3.rotation}
+            >
+              <meshBasicMaterial toneMapped={false}>
+                <videoTexture
+                  attach="map"
+                  args={[starrail]}
+                  repeat={screenSize}
+                  wrapS={RepeatWrapping}
+                  wrapT={RepeatWrapping}
+                />
+              </meshBasicMaterial>
+            </mesh>
+            <mesh
+              geometry={nodes.screen_4.geometry}
+              position={nodes.screen_4.position}
+              rotation={nodes.screen_4.rotation}
+            >
+              <meshBasicMaterial toneMapped={false}>
+                <videoTexture
+                  attach="map"
+                  args={[unity]}
+                  repeat={screenSize}
+                  wrapS={RepeatWrapping}
+                  wrapT={RepeatWrapping}
+                />
+              </meshBasicMaterial>
+            </mesh>
+          </group>
+          <Environment preset="city" blur={1} />
+          <PerspectiveCamera makeDefault position={[0, 0, 18.5]} />
+        </Fisheye>
       </TFCanvas>
     </MuiBox>
   );
