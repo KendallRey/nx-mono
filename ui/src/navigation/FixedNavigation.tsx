@@ -25,10 +25,10 @@ export const FixedNavigation: React.FC<IFixedNavigation> = (props) => {
 
   const pathname = usePathname();
 
-  const [isTop, setIsTop] = useState(window.scrollY === 0);
+  const [isTop, setIsTop] = useState(typeof window !== 'undefined' ? window.scrollY === 0 : true);
 
   useEffect(() => {
-    const handleScroll = () => setIsTop(window.scrollY === 0);
+    const handleScroll = () => setIsTop(typeof window !== 'undefined' ? window.scrollY === 0 : true);
     window.addEventListener('scroll', handleScroll);
     handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);

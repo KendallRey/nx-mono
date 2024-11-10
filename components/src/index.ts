@@ -5,6 +5,7 @@ export * from "./helper-components/TableList";
 
 export * from "./hooks/useCallOnce";
 export * from "./hooks/useAppGLTF";
+export * from "./hooks/useVideoTexture";
 
 export * from "./text-field/TextField";
 export * from "./text-field/NumberField";
