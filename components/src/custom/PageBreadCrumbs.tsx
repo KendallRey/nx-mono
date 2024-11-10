@@ -1,4 +1,4 @@
-'use server';
+"use server";
 
 import { Breadcrumbs } from "@mui/material";
 import MuiLink from "../link/Link";
@@ -57,4 +57,3 @@ export const PageBreadCrumbs: React.FC<IPageBreadCrumbs> = (props) => {
     </Breadcrumbs>
   );
 };
-
