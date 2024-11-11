@@ -25,10 +25,13 @@ export const FixedNavigation: React.FC<IFixedNavigation> = (props) => {
 
   const pathname = usePathname();
 
-  const [isTop, setIsTop] = useState(typeof window !== 'undefined' ? window.scrollY === 0 : true);
+  const [isTop, setIsTop] = useState(
+    typeof window !== 'undefined' ? window.scrollY === 0 : true
+  );
 
   useEffect(() => {
-    const handleScroll = () => setIsTop(typeof window !== 'undefined' ? window.scrollY === 0 : true);
+    const handleScroll = () =>
+      setIsTop(typeof window !== 'undefined' ? window.scrollY === 0 : true);
     window.addEventListener('scroll', handleScroll);
     handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
@@ -53,7 +56,7 @@ export const FixedNavigation: React.FC<IFixedNavigation> = (props) => {
       }}
     >
       <div
-        className={`p-4 gap-4 flex ${
+        className={`mx-auto p-4 gap-4 flex ${
           logo ? 'justify-between' : 'justify-end'
         } ${className || ''}`}
         {...otherProps}
