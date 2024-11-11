@@ -42,7 +42,6 @@ export * from "./radio/Radio";
 export { default as MuiRadio } from "./radio/Radio";
 
 export * from "./paper/Paper";
-export { default as MuiPaper } from "./paper/Paper";
 
 export * from "./pagination/Pagination";
 export { default as MuiPagination } from "./pagination/Pagination";
