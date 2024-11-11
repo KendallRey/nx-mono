@@ -22,7 +22,7 @@ const RootLayout: React.FC<ILayout> = ({ children }) => {
           routes={ROUTES}
           linkClassName="border-b-2 border-transparent p-1"
           activeClassName="border-b-2 p-1 border-blue-500 text-white"
-          className="max-w-[1200px]"
+          className="max-w-[1200px] justify-center"
         />
         <Providers>{children}</Providers>
       </body>
