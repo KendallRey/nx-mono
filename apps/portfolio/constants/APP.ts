@@ -7,7 +7,7 @@ const TECHS = {
   TYPESCRIPT: 'Typescript',
   JAVASCRIPT: 'Javascript',
   TAILWIND: 'Tailwind CSS',
-  MUI: 'Tailwind',
+  MUI: 'Material UI',
   REDUX: 'Redux (RTK)',
   DJANGO: 'Django',
   VS_CODE: 'VS Code',
