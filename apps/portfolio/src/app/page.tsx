@@ -2,8 +2,6 @@
 
 import {
   MuiBox,
-  MuiList,
-  MuiListItem,
   useAppGLTF,
   useVideoTexture,
 } from '@nx-next-js-micro/components';

@@ -1,3 +1,5 @@
+import { IRoute } from '@nx-next-js-micro/components';
+
 // #region Techs and Tools
 const TECHS = {
   REACT_JS: 'ReactJS',

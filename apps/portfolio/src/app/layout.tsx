@@ -1,18 +1,13 @@
 import Providers from 'apps/portfolio/services/Providers';
 import './global.css';
+import { ILayout } from '@nx-next-js-micro/components';
+import { ROUTES } from 'apps/portfolio/constants/Routes';
 import { FixedNavigation } from '@nx-next-js-micro/ui';
-import { ILayout, IRoute } from '@nx-next-js-micro/components';
 
 export const metadata = {
   title: 'Kendall Rey',
   description: 'Hello there, KR here.',
 };
-
-const ROUTES: IRoute[] = [
-  { href: '/', name: 'Home' },
-  { href: '/project', name: 'Projects' },
-  { href: '/contact', name: 'Contact' },
-];
 
 const RootLayout: React.FC<ILayout> = ({ children }) => {
   return (
