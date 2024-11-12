@@ -2,6 +2,8 @@
 
 import {
   MuiBox,
+  MuiList,
+  MuiListItem,
   useAppGLTF,
   useVideoTexture,
 } from '@nx-next-js-micro/components';
@@ -9,6 +11,7 @@ import { ModelDisplay, TFCanvas } from '@nx-next-js-micro/ui';
 import { OrbitControls, PerspectiveCamera } from '@react-three/drei';
 import { RepeatWrapping, Vector2 } from 'three';
 import Background from './ui/Background';
+import Foreground from './ui/Foreground';
 
 type ScreenModelNames = 'screen_1' | 'screen_2' | 'screen_3' | 'screen_4';
 
@@ -27,7 +30,8 @@ export default function HomePage() {
   return (
     <MuiBox className="h-screen">
       <Background />
-      <TFCanvas flat>
+      <Foreground />
+      <TFCanvas flat className="mt-[-150px] md:mt-[0px]">
         <OrbitControls
           minPolarAngle={0}
           maxPolarAngle={Math.PI / 1.6}
