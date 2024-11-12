@@ -1,6 +1,12 @@
 'use client';
 
-import { IRoute, MuiBox, MuiTypography } from '@nx-next-js-micro/components';
+import {
+  getEnvArrayValue,
+  IRoute,
+  MuiBox,
+  MuiTooltip,
+  MuiTypography,
+} from '@nx-next-js-micro/components';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import React, { useCallback, useEffect, useState } from 'react';
@@ -24,6 +30,10 @@ export const FixedNavigation: React.FC<IFixedNavigation> = (props) => {
   } = props;
 
   const pathname = usePathname();
+
+  const underDevelopmentRoutes = getEnvArrayValue(
+    process.env.NEXT_PUBLIC_UNDER_DEVELOPMENT_ROUTES
+  );
 
   const [isTop, setIsTop] = useState(
     typeof window !== 'undefined' ? window.scrollY === 0 : true
@@ -65,22 +75,32 @@ export const FixedNavigation: React.FC<IFixedNavigation> = (props) => {
         <div className="flex items-center gap-12">
           {routes.map((route) => {
             const active = isActiveLink(route.href);
+            const isUnderDevelopment = underDevelopmentRoutes?.includes(
+              route.href.replace('/', '')
+            );
             return (
-              <Link
-                key={route.href}
-                href={route.href}
-                className={`${
-                  active
-                    ? `${activeClassName || ''} ${
-                        route.activeClassName || 'text-black'
-                      }`
-                    : `${linkClassName || ''} ${
-                        route.className || 'text-white'
-                      }`
-                }`}
+              <MuiTooltip
+                title={isUnderDevelopment ? 'Under Development' : ''}
+                arrow
               >
-                <MuiTypography fontSize={18}>{route.name}</MuiTypography>
-              </Link>
+                <Link
+                  key={route.href}
+                  href={isUnderDevelopment ? '' : route.href}
+                  className={`${
+                    isUnderDevelopment
+                      ? 'text-neutral-400'
+                      : active
+                      ? `${activeClassName || ''} ${
+                          route.activeClassName || 'text-black'
+                        }`
+                      : `${linkClassName || ''} ${
+                          route.className || 'text-white'
+                        }`
+                  }`}
+                >
+                  <MuiTypography fontSize={18}>{route.name}</MuiTypography>
+                </Link>
+              </MuiTooltip>
             );
           })}
         </div>
