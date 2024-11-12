@@ -1,5 +1,7 @@
 // Use this file to export React client components (e.g. those with 'use client' directive) or other non-server utilities
 
+export * from "./helper/environment";
+
 export * from "./helper-components/ComponentList";
 export * from "./helper-components/TableList";
 
@@ -118,6 +120,8 @@ export { default as MuiBadge } from "./badge/Badge";
 
 export * from "./avatar/Avatar";
 export { default as MuiAvatar } from "./avatar/Avatar";
+
+export * from "./tooltip/Tooltip";
 
 export * from "./markdown/MDEditor";
 export * from "./markdown/RMDEditor";
