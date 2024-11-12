@@ -1,8 +1,8 @@
 import React, { ReactNode } from "react";
 import { MuiTd, MuiTr } from "../table/Table";
 import { Skeleton } from "@mui/material";
-import MuiTypography from "../typography/Typograph";
 import MuiButton from "../button/Button";
+import { MuiTypography } from "../typography/Typograph";
 
 type ITableList<T> = {
   isLoading: boolean;

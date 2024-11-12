@@ -13,7 +13,6 @@ export * from "./text-field/MoneyField";
 export { default as MuiTextField } from "./text-field/TextField";
 
 export * from "./typography/Typograph";
-export { default as MuiTypography } from "./typography/Typograph";
 
 export * from "./table/Table";
 export { default as MuiTable } from "./table/Table";

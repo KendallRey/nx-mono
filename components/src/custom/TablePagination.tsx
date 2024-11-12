@@ -4,7 +4,6 @@ import React, { FormEvent, useCallback, useEffect, useMemo, useState } from "rea
 import MuiPagination from "../pagination/Pagination";
 import { useRouter, useSearchParams } from "next/navigation";
 
-import MuiTypography from "../typography/Typograph";
 import MuiIconButton from "../icon-button/IconButton";
 import { parseToPage } from "../helper/component";
 import { useCallOnce } from "../hooks/useCallOnce";
@@ -15,6 +14,7 @@ import { getIndexOf } from "../helper/array";
 import { RCE } from "../types";
 import { toSearchParams } from "../helper/api";
 import API from "../constants/API";
+import { MuiTypography } from "../typography/Typograph";
 
 type ITablePagination = {
   count: number;
