@@ -29,7 +29,7 @@ export default function HomePage() {
     <MuiBox className="h-screen">
       <Background />
       <Foreground />
-      <TFCanvas flat className="mt-[-150px] md:mt-[0px]">
+      <TFCanvas flat className="mt-[80px] md:mt-[50px] lg:mt-[0px]">
         <OrbitControls
           minPolarAngle={0}
           maxPolarAngle={Math.PI / 1.6}
