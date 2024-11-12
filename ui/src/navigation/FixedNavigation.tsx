@@ -79,12 +79,12 @@ export const FixedNavigation: React.FC<IFixedNavigation> = (props) => {
               route.href.replace('/', '')
             );
             return (
-              <MuiTooltip
+              <MuiTooltip 
+                key={route.href}
                 title={isUnderDevelopment ? 'Under Development' : ''}
                 arrow
               >
                 <Link
-                  key={route.href}
                   href={isUnderDevelopment ? '' : route.href}
                   className={`${
                     isUnderDevelopment
