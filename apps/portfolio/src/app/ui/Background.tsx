@@ -9,7 +9,7 @@ type IBackground = {
 
 const Background: React.FC<IBackground> = ({ mode }) => {
   return (
-    <MuiBox className="absolute inset-0 overflow-hidden">
+    <MuiBox className="absolute inset-0 overflow-hidden" style={{ pointerEvents: "none" }}>
       <MuiBox className="mx-6 my-12 md:mx-12">
         <MuiTypography
           className={`${
