@@ -5,7 +5,7 @@ import Section from 'ui/src/section/Section';
 const ProjectPage = () => {
   return (
     <>
-      <Background mode='dark' />
+      <Background mode="dark" />
       <Section maxWidth={1200} className="relative mt-12">
         ProjectPage
       </Section>
