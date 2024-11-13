@@ -12,11 +12,9 @@ import { CustomMuiFormControl, MuiFormControlLabel } from "../form-control/FormC
 
 type IMuiRadio = RadioProps;
 
-const MuiRadio: React.FC<IMuiRadio> = (props) => {
+export const MuiRadio: React.FC<IMuiRadio> = (props) => {
   return <Radio {...props} />;
 };
-
-export default MuiRadio;
 
 type IFormRadio = {
   label: string;

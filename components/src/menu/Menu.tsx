@@ -45,8 +45,6 @@ const StyledMenu = styled((props: MenuProps) => (
   },
 }));
 
-const MuiMenu: React.FC<IMuiMenu> = (props) => {
+export const MuiMenu: React.FC<IMuiMenu> = (props) => {
   return <StyledMenu {...props} />;
 };
-
-export default MuiMenu;

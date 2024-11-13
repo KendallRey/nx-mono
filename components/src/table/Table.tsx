@@ -17,12 +17,11 @@ import {
 } from "@mui/material";
 import { visuallyHidden } from "@mui/utils";
 import { OverridableComponent } from "@mui/material/OverridableComponent";
-import MuiTypography from "../typography/Typograph";
 import TablePagination from "../custom/TablePagination";
-import MuiIconButton from "../icon-button/IconButton";
+import { MuiIconButton } from "../icon-button/IconButton";
 import { HiXMark } from "react-icons/hi2";
-import MuiSelect from "../select/Select";
 import { IOrdering } from "../types";
+import { MuiTypography } from "../typography/Typograph";
 
 const CustomMuiTd = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -145,7 +144,7 @@ type IMuiTable = {
   colsWidth?: (string | number | IColGroupItem)[];
 } & TableProps;
 
-const MuiTable: React.FC<IMuiTable> = (props) => {
+export const MuiTable: React.FC<IMuiTable> = (props) => {
   const { containerProps, children, paginationProps, colsWidth, ...cleanProps } = props;
 
   return (
@@ -167,8 +166,6 @@ const MuiTable: React.FC<IMuiTable> = (props) => {
     </>
   );
 };
-
-export default MuiTable;
 
 type IColGroupItem = {
   w?: number | string;

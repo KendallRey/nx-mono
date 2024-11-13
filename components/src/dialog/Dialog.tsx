@@ -5,10 +5,10 @@ import DialogTitle from "@mui/material/DialogTitle";
 import Slide from "@mui/material/Slide";
 import { TransitionProps } from "@mui/material/transitions";
 import { ReactElement, ReactNode, Ref, forwardRef, useCallback, useState } from "react";
-import MuiButton from "../button/Button";
+import { MuiButton } from "../button/Button";
 import { Breakpoint, useMediaQuery, useTheme } from "@mui/material";
 import { confirmUnsavedChanges } from "../hooks/useUnsavedChangesPrompt";
-import MuiIconButton from "../icon-button/IconButton";
+import { MuiIconButton } from "../icon-button/IconButton";
 import { HiXMark } from "react-icons/hi2";
 
 const Transition = forwardRef(function Transition(
@@ -37,7 +37,7 @@ type IMuiDialog = {
   hideActions?: boolean;
 } & DialogProps;
 
-const MuiDialog: React.FC<IMuiDialog> = (props) => {
+export const MuiDialog: React.FC<IMuiDialog> = (props) => {
   const {
     title,
     children,
@@ -111,5 +111,3 @@ const MuiDialog: React.FC<IMuiDialog> = (props) => {
     </Dialog>
   );
 };
-
-export default MuiDialog;

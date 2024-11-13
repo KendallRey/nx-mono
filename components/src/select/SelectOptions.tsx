@@ -1,5 +1,5 @@
 import React, { ReactNode } from "react";
-import MuiMenuItem from "../menu-item/MenuItem";
+import { MuiMenuItem } from "../menu-item/MenuItem";
 import { CircularProgress } from "@mui/material";
 
 type ISelectOptions<T> = {
@@ -11,7 +11,7 @@ type ISelectOptions<T> = {
   error?: boolean;
 };
 
-const SelectOptions = <T,>(props: ISelectOptions<T>) => {
+export const SelectOptions = <T,>(props: ISelectOptions<T>) => {
   const {
     data,
     render,
@@ -35,5 +35,3 @@ const SelectOptions = <T,>(props: ISelectOptions<T>) => {
     </>
   );
 };
-
-export default SelectOptions;

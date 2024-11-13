@@ -11,7 +11,6 @@ import {
   FormGroup,
   FormGroupProps,
 } from "@mui/material";
-import { COLOR } from "../constants/color";
 import { BASE_INPUT } from "../constants/style";
 
 export type IMuiFormControl = {
@@ -53,7 +52,7 @@ export const CustomMuiFormControl = styled((props: IMuiFormControl) => <FormCont
   }),
 );
 
-const MuiFormControl: React.FC<IMuiFormControl> = (props) => {
+export const MuiFormControl: React.FC<IMuiFormControl> = (props) => {
   const { label, children, ...otherProps } = props;
 
   return (
@@ -63,8 +62,6 @@ const MuiFormControl: React.FC<IMuiFormControl> = (props) => {
     </CustomMuiFormControl>
   );
 };
-
-export default MuiFormControl;
 
 type IFormControlLabel = FormControlLabelProps;
 

@@ -3,8 +3,6 @@ import React from "react";
 
 type IMuiSkeleton = SkeletonProps;
 
-const MuiSkeleton: React.FC<IMuiSkeleton> = (props) => {
+export const MuiSkeleton: React.FC<IMuiSkeleton> = (props) => {
   return <Skeleton {...props} sx={{ transform: "none" }} />;
 };
-
-export default MuiSkeleton;

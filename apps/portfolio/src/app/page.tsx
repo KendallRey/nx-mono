@@ -6,13 +6,10 @@ import {
   useVideoTexture,
 } from '@nx-next-js-micro/components';
 import { ModelDisplay, TFCanvas } from '@nx-next-js-micro/ui';
-import {
-  CameraControls,
-  Environment,
-  Fisheye,
-  PerspectiveCamera,
-} from '@react-three/drei';
+import { OrbitControls, PerspectiveCamera } from '@react-three/drei';
 import { RepeatWrapping, Vector2 } from 'three';
+import Background from './ui/Background';
+import Foreground from './ui/Foreground';
 
 type ScreenModelNames = 'screen_1' | 'screen_2' | 'screen_3' | 'screen_4';
 
@@ -30,76 +27,79 @@ export default function HomePage() {
 
   return (
     <MuiBox className="h-screen">
-      <TFCanvas flat>
-        <Fisheye zoom={0}>
-          <CameraControls minPolarAngle={0} maxPolarAngle={Math.PI / 1.6} />
-          <ambientLight intensity={Math.PI / 2} />
-          <group>
-            <ModelDisplay path="assets/pc/home_pc_test_4.glb" props={{}} />
-            <mesh
-              geometry={nodes.screen_1.geometry}
-              position={nodes.screen_1.position}
-              rotation={nodes.screen_1.rotation}
-            >
-              <meshBasicMaterial toneMapped={false}>
-                <videoTexture
-                  attach="map"
-                  args={[code]}
-                  repeat={screenSize}
-                  wrapS={RepeatWrapping}
-                  wrapT={RepeatWrapping}
-                />
-              </meshBasicMaterial>
-            </mesh>
-            <mesh
-              geometry={nodes.screen_2.geometry}
-              position={nodes.screen_2.position}
-              rotation={nodes.screen_2.rotation}
-            >
-              <meshBasicMaterial toneMapped={false}>
-                <videoTexture
-                  attach="map"
-                  args={[swordFastForward]}
-                  repeat={screenSize}
-                  wrapS={RepeatWrapping}
-                  wrapT={RepeatWrapping}
-                />
-              </meshBasicMaterial>
-            </mesh>
-            <mesh
-              geometry={nodes.screen_3.geometry}
-              position={nodes.screen_3.position}
-              rotation={nodes.screen_3.rotation}
-            >
-              <meshBasicMaterial toneMapped={false}>
-                <videoTexture
-                  attach="map"
-                  args={[starrail]}
-                  repeat={screenSize}
-                  wrapS={RepeatWrapping}
-                  wrapT={RepeatWrapping}
-                />
-              </meshBasicMaterial>
-            </mesh>
-            <mesh
-              geometry={nodes.screen_4.geometry}
-              position={nodes.screen_4.position}
-              rotation={nodes.screen_4.rotation}
-            >
-              <meshBasicMaterial toneMapped={false}>
-                <videoTexture
-                  attach="map"
-                  args={[unity]}
-                  repeat={screenSize}
-                  wrapS={RepeatWrapping}
-                  wrapT={RepeatWrapping}
-                />
-              </meshBasicMaterial>
-            </mesh>
-          </group>
-          <Environment preset="city" blur={1} />
-          <PerspectiveCamera makeDefault position={[0, 0, 18.5]} />
-        </Fisheye>
+      <Background />
+      <Foreground />
+      <TFCanvas flat className="mt-[80px] md:mt-[50px] lg:mt-[0px]">
+        <OrbitControls
+          minPolarAngle={0}
+          maxPolarAngle={Math.PI / 1.6}
+          autoRotate
+        />
+        <ambientLight intensity={4} />
+        <group position={[0, -5, 0]}>
+          <ModelDisplay path="assets/pc/home_pc_test_4.glb" props={{}} />
+          <mesh
+            geometry={nodes.screen_1.geometry}
+            position={nodes.screen_1.position}
+            rotation={nodes.screen_1.rotation}
+          >
+            <meshBasicMaterial toneMapped={false}>
+              <videoTexture
+                attach="map"
+                args={[code]}
+                repeat={screenSize}
+                wrapS={RepeatWrapping}
+                wrapT={RepeatWrapping}
+              />
+            </meshBasicMaterial>
+          </mesh>
+          <mesh
+            geometry={nodes.screen_2.geometry}
+            position={nodes.screen_2.position}
+            rotation={nodes.screen_2.rotation}
+          >
+            <meshBasicMaterial toneMapped={false}>
+              <videoTexture
+                attach="map"
+                args={[swordFastForward]}
+                repeat={screenSize}
+                wrapS={RepeatWrapping}
+                wrapT={RepeatWrapping}
+              />
+            </meshBasicMaterial>
+          </mesh>
+          <mesh
+            geometry={nodes.screen_3.geometry}
+            position={nodes.screen_3.position}
+            rotation={nodes.screen_3.rotation}
+          >
+            <meshBasicMaterial toneMapped={false}>
+              <videoTexture
+                attach="map"
+                args={[starrail]}
+                repeat={screenSize}
+                wrapS={RepeatWrapping}
+                wrapT={RepeatWrapping}
+              />
+            </meshBasicMaterial>
+          </mesh>
+          <mesh
+            geometry={nodes.screen_4.geometry}
+            position={nodes.screen_4.position}
+            rotation={nodes.screen_4.rotation}
+          >
+            <meshBasicMaterial toneMapped={false}>
+              <videoTexture
+                attach="map"
+                args={[unity]}
+                repeat={screenSize}
+                wrapS={RepeatWrapping}
+                wrapT={RepeatWrapping}
+              />
+            </meshBasicMaterial>
+          </mesh>
+        </group>
+        <PerspectiveCamera makeDefault position={[10, 13, 28.5]} />
       </TFCanvas>
     </MuiBox>
   );

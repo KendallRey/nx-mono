@@ -9,8 +9,6 @@ const DEFAULT_PROPS: ChipProps = {
 // extend props here
 type IMuiChip = ChipProps;
 
-const MuiChip: React.FC<IMuiChip> = (props) => {
+export const MuiChip: React.FC<IMuiChip> = (props) => {
   return <Chip {...DEFAULT_PROPS} {...props} />;
 };
-
-export default MuiChip;

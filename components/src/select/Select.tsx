@@ -36,12 +36,10 @@ const CustomMuiSelect = styled((props: SelectProps) => <Select disableUnderline 
   }),
 );
 
-const MuiSelect: React.FC<IMuiSelect> = (props) => {
+export const MuiSelect: React.FC<IMuiSelect> = (props) => {
   const { ...otherProps } = props;
   return <CustomMuiSelect {...DEFAULT_PROPS} {...otherProps} />;
 };
-
-export default MuiSelect;
 
 export type IMuiFormSelect = {
   fCProps?: DefaultComponentProps<FormControlTypeMap<object, "div">>;

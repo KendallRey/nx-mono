@@ -2,7 +2,7 @@
 
 import React from "react";
 
-import Box, { BoxProps } from "@mui/material/Box";
+import { Box, BoxProps } from "@mui/material";
 
 export type IMuiBox = BoxProps;
 
