@@ -58,6 +58,7 @@ export * from "./rating/Rating";
 export type * from "./types/index";
 export * from "./date-picker/DateRangePicker";
 export * from "./custom/PageBreadCrumbs";
+export * from "./custom/TextRoller";
 export * from "./hooks/useAppMediaQuery";
 export * from "./carousel/ResponsiveCarousel";
 export * from "./carousel/MultiCarousel";
