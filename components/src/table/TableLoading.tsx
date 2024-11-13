@@ -7,7 +7,7 @@ type ITableLoading = {
   colSpan?: number;
 };
 
-const TableLoading: React.FC<ITableLoading> = (props) => {
+export const TableLoading: React.FC<ITableLoading> = (props) => {
   const { colSpan } = props;
   return (
     <tr>
@@ -19,5 +19,3 @@ const TableLoading: React.FC<ITableLoading> = (props) => {
     </tr>
   );
 };
-
-export default TableLoading;

@@ -42,7 +42,7 @@ export type IMuiTextField = {
   errorText?: string;
 } & TextFieldProps;
 
-const MuiTextField = (props: IMuiTextField) => {
+export const MuiTextField = (props: IMuiTextField) => {
   const { label, id, name, slotProps, maxLength, errorText, ...cleanProps } = props;
   const _id = formatToId(id || String(label));
   return (
@@ -64,5 +64,3 @@ const MuiTextField = (props: IMuiTextField) => {
     />
   );
 };
-
-export default MuiTextField;

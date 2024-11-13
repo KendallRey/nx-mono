@@ -10,7 +10,7 @@ type MuiButtonProps = {
 
 const DEFAULT_PROPS = {};
 
-const MuiButton: React.FC<MuiButtonProps> = (props) => {
+export const MuiButton: React.FC<MuiButtonProps> = (props) => {
   const { sx, noAnimation, ...otherProps } = props;
   return (
     <Button
@@ -30,5 +30,3 @@ const MuiButton: React.FC<MuiButtonProps> = (props) => {
     />
   );
 };
-
-export default MuiButton;

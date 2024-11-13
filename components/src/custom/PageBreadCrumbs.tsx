@@ -1,7 +1,7 @@
 "use server";
 
 import { Breadcrumbs } from "@mui/material";
-import MuiLink from "../link/Link";
+import { MuiLink } from "../link/Link";
 import Link from "next/link";
 import { formatToLabel, isUUID } from "../helper/component";
 import { headers } from "next/headers";

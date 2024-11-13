@@ -1,7 +1,7 @@
 import React, { ReactNode } from "react";
 import { MuiTd, MuiTr } from "../table/Table";
 import { Skeleton } from "@mui/material";
-import MuiButton from "../button/Button";
+import { MuiButton } from "../button/Button";
 import { MuiTypography } from "../typography/Typograph";
 
 type ITableList<T> = {

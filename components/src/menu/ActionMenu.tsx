@@ -3,7 +3,7 @@
 import { IconButton } from "@mui/material";
 import { ReactNode, useCallback, useMemo, useState } from "react";
 import { HiEllipsisVertical } from "react-icons/hi2";
-import MuiMenu from "./Menu";
+import { MuiMenu } from "./Menu";
 
 type IActionMenu = {
   open?: boolean;
@@ -13,7 +13,7 @@ type IActionMenu = {
   iconButton?: ReactNode;
 };
 
-const ActionMenu = (props: IActionMenu) => {
+export const ActionMenu = (props: IActionMenu) => {
   const { children, icon, open, setOpen, iconButton } = props;
 
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
@@ -60,5 +60,3 @@ const ActionMenu = (props: IActionMenu) => {
     </>
   );
 };
-
-export default ActionMenu;

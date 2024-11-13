@@ -2,7 +2,7 @@ import { NumberFormatValues, NumericFormat, NumericFormatProps } from "react-num
 import { forwardRef, useCallback } from "react";
 import { NUMBER } from "../helper/field";
 import { formatToId } from "../helper/component";
-import MuiTextField, { IMuiTextField } from "./TextField";
+import { MuiTextField, IMuiTextField } from "./TextField";
 import { OutlinedInputProps } from "@mui/material";
 
 export type ICustomNumericFormatProps = {
