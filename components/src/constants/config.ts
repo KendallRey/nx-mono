@@ -45,5 +45,5 @@ export const MODEL = {
 } as const;
 
 export const DEBOUNCE = {
-  DELAY: 500
+  DELAY: 500,
 } as const;
