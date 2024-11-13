@@ -1,7 +1,8 @@
 'use client';
 
+import { TextRoller } from '@nx-next-js-micro/components';
 import { APP } from 'apps/portfolio/constants/APP';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 
 const TEMP = [
   'dev',
@@ -17,19 +18,6 @@ const TEMP = [
 ];
 
 const Foreground = () => {
-  const [iAm, setIAm] = useState(TEMP[0]);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      const index = Math.floor(Math.random() * TEMP.length);
-      setIAm(TEMP[index]);
-    }, 5000);
-
-    return () => {
-      clearInterval(interval);
-    };
-  }, []);
-
   return (
     <div className="absolute inset-0 overflow-hidden">
       <div className="absolute right-0 z-[1] md:bottom-0 mx-6 my-12 md:mx-12">
@@ -41,7 +29,12 @@ const Foreground = () => {
       </div>
       <div className="absolute bottom-0 m-12">
         <div className="text-[30px] text-neutral-500">Sometimes</div>
-        <div className="text-[40px] text-neutral-300 font-bold">{iAm}</div>
+        <TextRoller
+          values={TEMP}
+          fontSize={40}
+          height={50}
+          className="text-neutral-300 font-bold"
+        />
       </div>
     </div>
   );

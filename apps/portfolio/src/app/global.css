@@ -26,3 +26,12 @@ p {
   font-size: 1rem;
   text-transform: none;
 }
+
+.hide-scrollbar {
+  overflow-y: scroll; /* Ensure the content is still scrollable */
+  scrollbar-width: none; /* For Firefox */
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none; /* For Chrome, Safari, and Edge */
+}
