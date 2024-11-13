@@ -29,6 +29,8 @@ const TEMP = [
   'sharp',
   'rafce',
   "somethin' stupid",
+  'error',
+  "i'll fix it later"
 ];
 
 const Foreground = () => {
