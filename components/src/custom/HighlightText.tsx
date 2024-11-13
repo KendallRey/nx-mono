@@ -1,5 +1,5 @@
 import React, { useMemo } from "react";
-import MuiTypography from "../typography/Typograph";
+import { MuiTypography } from "../typography/Typograph";
 
 type IHighlightText = {
   text: string;

@@ -1,3 +1,5 @@
+'use client';
+
 import { ILayout, MuiBox } from '@nx-next-js-micro/components';
 import React from 'react';
 

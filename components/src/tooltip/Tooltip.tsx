@@ -3,8 +3,6 @@ import React from "react";
 
 type IMuiTooltip = TooltipProps;
 
-const MuiTooltip: React.FC<IMuiTooltip> = (props) => {
+export const MuiTooltip: React.FC<IMuiTooltip> = (props) => {
   return <Tooltip {...props} />;
 };
-
-export default MuiTooltip;

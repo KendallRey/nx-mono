@@ -1,5 +1,6 @@
 import React from "react";
-import MuiTypography from "../typography/Typograph";
+import { MuiTypography } from "../typography/Typograph";
+import { ILayout } from "../types";
 
 const PageTitle: React.FC<ILayout> = ({ children }) => {
   return (

@@ -1,16 +1,17 @@
 "use client";
 
-import MuiButton from "@/components/button/Button";
-import MuiDivider from "@/components/divider/Divider";
-import { FileValidator } from "@/components/helper/files";
-import { customEnqueueSnackbar, displaySnackbar } from "@/components/helper/notistack";
-import MuiTypography from "@/components/typography/Typograph";
 import { CircularProgress } from "@mui/material";
 import React, { useCallback, useRef, useState } from "react";
-import MuiImageList, { MuiImageListItem, MuiImageListItemBar } from "../image/Image";
+import { MuiImageList, MuiImageListItem, MuiImageListItemBar } from "../image/Image";
 import { nanoid } from "@reduxjs/toolkit";
-import MuiIconButton from "../icon-button/IconButton";
+import { MuiIconButton } from "../icon-button/IconButton";
 import { HiPhoto, HiXMark } from "react-icons/hi2";
+import { MuiTypography } from "../typography/Typograph";
+import { FileValidator } from "../helper/files";
+import { customEnqueueSnackbar, displaySnackbar } from "../helper/notistack";
+import { MuiButton } from "../button/Button";
+import { MuiDivider } from "../divider/Divider";
+import { RCE } from "../types";
 
 type IUploadFile = {
   uploadFn?: (file: File) => Promise<{ data?: any; error?: string }>;

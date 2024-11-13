@@ -19,5 +19,3 @@ export const TableRowSelectable: React.FC<ITableRowSelectable> = (props) => {
     </tr>
   );
 };
-
-export default TableRowSelectable;

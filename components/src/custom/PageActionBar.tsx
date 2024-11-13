@@ -1,8 +1,8 @@
 "use client";
 
-import React, { useCallback } from "react";
-import MuiFab from "../fab/Fab";
-import MuiBox from "../box/Box";
+import { useCallback } from "react";
+import { MuiFab } from "../fab/Fab";
+import { MuiBox } from "../box/Box";
 import { BiChevronDown, BiChevronUp } from "react-icons/bi";
 
 const PageActionBar = () => {
