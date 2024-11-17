@@ -30,7 +30,7 @@ const TEMP = [
   'rafce',
   "somethin' stupid",
   'error',
-  "i'll fix it later"
+  "i'll fix it later",
 ];
 
 const Foreground = () => {
