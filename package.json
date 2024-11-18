@@ -5,8 +5,7 @@
   "license": "MIT",
   "scripts": {
     "prettier": "prettier --write \"src/**/*\"",
-    "prettier:check": "prettier --check \"src/**/*\"",
-    "prepare": "husky"
+    "prettier:check": "prettier --check \"src/**/*\""
   },
   "private": true,
   "devDependencies": {
@@ -16,8 +15,7 @@
     "@types/node": "18.16.9",
     "@types/react": "18.3.1",
     "@types/react-date-range": "^1.4.9",
-    "@types/react-dom": "18.3.0",
-    "husky": "^9.1.6"
+    "@types/react-dom": "18.3.0"
   },
   "dependencies": {
     "@emotion/react": "^11.13.3",
