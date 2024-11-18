@@ -103,6 +103,9 @@ npx nx reset
 nx run <project_name/>:start
 ```
 
+## Pre-Commits
+- [Husky](https://typicode.github.io/husky/get-started.html)
+
 
 [Nx, How to Deploy to Vercel](https://nx.dev/recipes/react/deploy-nextjs-to-vercel)
 
