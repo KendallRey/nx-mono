@@ -16,8 +16,8 @@ const TechAndToolPage = () => {
           <div key={tech.name} className={styles['card']}>
             <h2>{tech.name}</h2>
             <div className={styles['content']}>
-              {tech.icon}
-              <p>{tech.description || '---'}</p>
+              <span>{tech.icon}</span>
+              <span>{tech.description || '---'}</span>
             </div>
           </div>
         ))}

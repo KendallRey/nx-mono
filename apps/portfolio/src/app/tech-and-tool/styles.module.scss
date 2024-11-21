@@ -31,11 +31,12 @@ $content-gap: 2rem;
     flex-shrink: 0;
   }
   p {
-    text-align: justify;
+    // text-align: justify;
   }
   .content {
     gap: $content-gap;
-    display: flex;
+    display: grid;
+    grid-template-columns: auto 1fr;
   }
 
   &:hover {

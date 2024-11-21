@@ -40,21 +40,23 @@ import {
 const REACT_JS: ITechToolStack = {
   name: 'React JS',
   description:
-    'It was taught at my 4th year college, and been using it ever since.',
+    'It was taught at my 4th year college, and been using it ever since. Probably what got me here.',
   icon: REACT_JS_SVG,
   type: TechToolType.MAIN,
 };
 
 const NEXT_JS: ITechToolStack = {
   name: 'Next JS',
-  description: '',
+  description:
+    'React framework with routing, middlewares, server-side rendering, etc., already setup. Now I always default to this in new apps.',
   icon: NEXT_JS_SVG,
   type: TechToolType.MAIN,
 };
 
 const TYPESCRIPT: ITechToolStack = {
   name: 'Typescript',
-  description: '',
+  description:
+    'Generics, interfaces and static typing. After using it, I can never go back no matter how small of a scale the project is.',
   icon: TYPESCRIPT_SVG,
   type: TechToolType.MAIN,
 };
@@ -75,7 +77,8 @@ const TAILWIND_CSS: ITechToolStack = {
 
 const MATERIAL_UI: ITechToolStack = {
   name: 'Material UI',
-  description: '',
+  description:
+    'React component library I always use, the behavior of components are pretty good. Highly customizable, specially adding custom variants.',
   icon: MATERIAL_UI_SVG,
   type: TechToolType.MAIN,
 };
@@ -103,14 +106,16 @@ const VS_CODE: ITechToolStack = {
 
 const FIREBASE: ITechToolStack = {
   name: 'Firebase',
-  description: '',
+  description:
+    'Yeah I know this too, like all web development students. But I stopped before GCP functions.',
   icon: FIREBASE_SVG,
   type: TechToolType.MAIN,
 };
 
 const BLENDER: ITechToolStack = {
   name: 'Blender',
-  description: '',
+  description:
+    'Learned because for unity assets, stayed for satisfying renders, animations, 3D models, texturing, ...',
   icon: BLENDER_SVG,
   type: TechToolType.MAIN,
 };
@@ -124,7 +129,8 @@ const SASS: ITechToolStack = {
 
 const POSTMAN: ITechToolStack = {
   name: 'Postman',
-  description: '',
+  description:
+    "Testing APIs (even in different environments) and also documenting them. Only to realize it's taking too much time in developing, but why not!",
   icon: POSTMAN_SVG,
   type: TechToolType.MAIN,
 };
