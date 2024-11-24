@@ -1,0 +1,65 @@
+@use 'sass:math';
+
+$svg-width: 7rem;
+$title-font-size: 1.5rem;
+$content-gap: 3rem;
+
+.card {
+  height: 220px;
+  position: relative;
+  // border: 1px solid white;
+  border-radius: 1rem;
+  overflow: hidden;
+  padding: 1rem;
+  transition-duration: 200ms;
+
+  &::before {
+    content: ' ';
+    position: absolute;
+    background-image: linear-gradient(
+      0deg,
+      rgb(23 23 23 / var(--tw-bg-opacity)) 46%,
+      rgba(255, 255, 255, 0) 80%
+    );
+    width: calc(100% - ($svg-width + $content-gap));
+    height: 100%;
+    bottom: 0;
+    right: 0;
+    transition-duration: 200ms;
+  }
+
+  h2 {
+    transition-duration: 200ms;
+    font-size: $title-font-size;
+    position: relative;
+  }
+  svg {
+    width: $svg-width;
+    flex-shrink: 0;
+  }
+  .description {
+    // margin-top: $title-font-size * -1.2;
+    transition-duration: 200ms;
+  }
+  .content {
+    gap: $content-gap;
+    display: grid;
+    grid-template-columns: auto 1fr;
+  }
+
+  &:hover {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    h2 {
+      margin-left: calc($svg-width + $content-gap);
+    }
+    svg {
+      margin-top: -$title-font-size;
+    }
+    .description {
+      // margin-top: 0px;
+    }
+    &::before {
+      height: 0%;
+    }
+  }
+}
