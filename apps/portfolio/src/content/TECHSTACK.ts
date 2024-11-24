@@ -63,14 +63,16 @@ const TYPESCRIPT: ITechToolStack = {
 
 const JAVASCRIPT: ITechToolStack = {
   name: 'Javascript',
-  description: '',
+  description:
+    "I thought I know javascript, until I saw someone using a method I've never heard before. 'console.table()' instead of 'console.log()'",
   icon: JAVASCRIPT_SVG,
   type: TechToolType.MAIN,
 };
 
 const TAILWIND_CSS: ITechToolStack = {
   name: 'Tailwind CSS',
-  description: '',
+  description:
+    'I always use in my apps, specially for layouts, flexbox and grids. Easy setup for responsiveness but can get quite long.',
   icon: TAILWIND_CSS_SVG,
   type: TechToolType.MAIN,
 };
@@ -84,15 +86,16 @@ const MATERIAL_UI: ITechToolStack = {
 };
 
 const REDUX: ITechToolStack = {
-  name: 'Redux',
-  description: '',
+  name: 'Redux (RTK)',
+  description:
+    'State management, data fetching and caching. I always used it for handling form states / values. Writing helper functions for actions / reducers.',
   icon: REDUX_SVG,
   type: TechToolType.MAIN,
 };
 
 const DJANGO: ITechToolStack = {
   name: 'Django',
-  description: '',
+  description: 'Studying for work, using as backend service for the APIs.',
   icon: DJANGO_SVG,
   type: TechToolType.MAIN,
 };
@@ -107,7 +110,7 @@ const VS_CODE: ITechToolStack = {
 const FIREBASE: ITechToolStack = {
   name: 'Firebase',
   description:
-    'Yeah I know this too, like all web development students. But I stopped before GCP functions.',
+    'Yeah I know this too, like all web development students. But I stopped before "deploying GCP functions".',
   icon: FIREBASE_SVG,
   type: TechToolType.MAIN,
 };
@@ -122,7 +125,8 @@ const BLENDER: ITechToolStack = {
 
 const SASS: ITechToolStack = {
   name: 'SASS',
-  description: '',
+  description:
+    'Like CSS but with OOP, also functions / mixins, inheritance, variables, math operations, probably one of the time where nesting looks good.',
   icon: SASS_SVG,
   type: TechToolType.MAIN,
 };
@@ -145,7 +149,7 @@ export const TECH_STACKS: ITechToolStack[] = [
   MATERIAL_UI,
   REDUX,
   DJANGO,
-  VS_CODE,
+  // VS_CODE,
   FIREBASE,
   BLENDER,
   SASS,
@@ -154,15 +158,17 @@ export const TECH_STACKS: ITechToolStack[] = [
 // #endregion
 
 const BOOTSTRAP: ITechToolStack = {
-  name: 'Bootstrap CSS',
-  description: '',
+  name: 'Bootstrap',
+  description:
+    'Pretty good, then tailwind came. Not using it as much as before.',
   icon: BOOTSTRAP_SVG,
   type: TechToolType.SUB,
 };
 
 const UNITY: ITechToolStack = {
   name: 'Unity',
-  description: '',
+  description:
+    'Just a hobby of mine, along side blender. The variety of things to do like code, animation, texture, shaders, 3D model.',
   icon: UNITY_SVG,
   type: TechToolType.SUB,
 };
@@ -176,14 +182,16 @@ const VERCEL: ITechToolStack = {
 
 const REACT_NATIVE: ITechToolStack = {
   name: 'React Native',
-  description: '',
+  description:
+    'React but mobile, quite fun after bashing your head figuring out how to set things up.',
   icon: REACT_NATIVE_SVG,
   type: TechToolType.SUB,
 };
 
 const ANDROID_STUDIO: ITechToolStack = {
   name: 'Android Studio',
-  description: '',
+  description:
+    'Whenever I have an mobile app I need, why not develop it?. I always default to this along with Firebase. Maybe I can use it to control some Arduino with my phone thru Firebase.',
   icon: ANDROID_SVG,
   type: TechToolType.SUB,
 };
@@ -198,42 +206,48 @@ export const SUB_TECH_STACKS: ITechToolStack[] = [
 
 const DOCKER: ITechToolStack = {
   name: 'Docker',
-  description: '',
+  description:
+    'Studying for work, running any apps without worrying for compatibility and dependencies. Just worry for your RAM.',
   icon: DOCKER_SVG,
   type: TechToolType.SUB,
 };
 
 const DIGITAL_OCEAN: ITechToolStack = {
   name: 'Digital Ocean',
-  description: '',
+  description:
+    'Using for work, but I can pretty much deploy web apps and setup some basic configurations.',
   icon: DIGITAL_OCEAN_SVG,
   type: TechToolType.SUB,
 };
 
 const ELECTRON_JS: ITechToolStack = {
   name: 'Electron JS',
-  description: '',
+  description:
+    'React but desktop app, just tried learning it to complete the React Trilogy.',
   icon: ELECTRON_JS_SVG,
   type: TechToolType.SUB,
 };
 
 const GO_LANG: ITechToolStack = {
   name: 'Go Lang',
-  description: '',
+  description:
+    "I want to learn another language I can use for backend. They also said it's fast, why not then.",
   icon: GO_LANG_SVG,
   type: TechToolType.SUB,
 };
 
 const JIRA: ITechToolStack = {
   name: 'Jira',
-  description: '',
+  description:
+    'Used for work in managing tickets, sprints planning, and milestones I guess.',
   icon: JIRA_SVG,
   type: TechToolType.SUB,
 };
 
 const KOTLIN: ITechToolStack = {
   name: 'Kotlin',
-  description: '',
+  description:
+    'Like java with typescript, not familiar with the syntax as much. Just used it in some mobile apps.',
   icon: KOTLIN_SVG,
   type: TechToolType.SUB,
 };
@@ -254,21 +268,23 @@ const NODE_JS: ITechToolStack = {
 
 const NPM: ITechToolStack = {
   name: 'NPM',
-  description: '',
+  description: `Used it for deploying a design system, just testing how can I "npm install" my own package.`,
   icon: NPM_SVG,
   type: TechToolType.SUB,
 };
 
 const POSTGRESQL: ITechToolStack = {
   name: 'PostgreSQL',
-  description: '',
+  description:
+    'Used for work, now will be my default choice if I need a DB. Need some digging?, just pgAdmin.',
   icon: POSTGRESQL_SVG,
   type: TechToolType.SUB,
 };
 
 const PYTHON: ITechToolStack = {
   name: 'Python',
-  description: '',
+  description:
+    'Using for work, learned the basic syntax. Pretty straight forward I guess.',
   icon: PYTHON_SVG,
   type: TechToolType.SUB,
 };
@@ -282,7 +298,8 @@ const RAILS: ITechToolStack = {
 
 const THREE_JS: ITechToolStack = {
   name: 'Three JS',
-  description: '',
+  description:
+    'I like blender so much, how can I express that in Web Development ?',
   icon: THREE_JS_SVG,
   type: TechToolType.SUB,
 };
@@ -296,21 +313,23 @@ const VITE: ITechToolStack = {
 
 const C_SHARP: ITechToolStack = {
   name: 'C#',
-  description: '',
+  description: 'Learned some basic syntax from Unity.',
   icon: C_SHARP_SVG,
   type: TechToolType.SUB,
 };
 
 const PRISMA: ITechToolStack = {
   name: 'Prisma',
-  description: '',
+  description:
+    'Studying for work, but since I learned drizzle beforehand. "Just use drizzle", I would say.',
   icon: PRISMA_SVG,
   type: TechToolType.SUB,
 };
 
 const NEST_JS: ITechToolStack = {
   name: 'NestJS',
-  description: '',
+  description:
+    'Studying for work, much better than setting up node and express from scratch.',
   icon: NEST_JS_SVG,
   type: TechToolType.SUB,
 };
@@ -323,14 +342,14 @@ export const BASIC_TECH_STACKS: ITechToolStack[] = [
   GO_LANG,
   JIRA,
   KOTLIN,
-  MONGO_DB,
-  NODE_JS,
+  // MONGO_DB,
+  // NODE_JS,
   NPM,
   POSTGRESQL,
   PYTHON,
-  RAILS,
+  // RAILS,
   THREE_JS,
-  VITE,
+  // VITE,
   ANDROID_STUDIO,
   C_SHARP,
   PRISMA,

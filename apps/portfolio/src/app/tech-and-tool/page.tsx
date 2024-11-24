@@ -1,48 +1,34 @@
 'use client';
 
 import React from 'react';
-import styles from './styles.module.scss';
 import {
   BASIC_TECH_STACKS,
   SUB_TECH_STACKS,
   TECH_STACKS,
 } from '../../content/TECHSTACK';
+import Card from 'apps/portfolio/components/TechTool/Card';
+import { MuiTypography } from '@nx-next-js-micro/components';
 
 const TechAndToolPage = () => {
   return (
-    <div className="my-24 flex flex-col text-neutral-300 max-w-[1200px] mx-auto">
-      <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-5">
+    <div className="my-24 px-0 md:px-4 flex flex-col text-neutral-300 max-w-[1400px] mx-auto">
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
         {TECH_STACKS.map((tech) => (
-          <div key={tech.name} className={styles['card']}>
-            <h2>{tech.name}</h2>
-            <div className={styles['content']}>
-              <span>{tech.icon}</span>
-              <span>{tech.description || '---'}</span>
-            </div>
-          </div>
+          <Card key={tech.name} {...tech} />
         ))}
       </div>
-      <div className="grid sm:grid-cols-2 md:grid-cols-3">
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
         {SUB_TECH_STACKS.map((tech) => (
-          <div key={tech.name} className={styles['card']}>
-            <h2>{tech.name}</h2>
-            <div className={styles['content']}>
-              {tech.icon}
-              <p>Lorem Ipsum</p>
-            </div>
-          </div>
+          <Card key={tech.name} {...tech} />
         ))}
       </div>
-      <div className="grid sm:grid-cols-2 md:grid-cols-3">
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
         {BASIC_TECH_STACKS.map((tech) => (
-          <div key={tech.name} className={styles['card']}>
-            <h2>{tech.name}</h2>
-            <div className={styles['content']}>
-              {tech.icon}
-              <p>Lorem Ipsum</p>
-            </div>
-          </div>
+          <Card key={tech.name} {...tech} />
         ))}
+      </div>
+      <div className="fixed right-[20px] bottom-[10px] bg-neutral-900">
+        <MuiTypography>This page is under development</MuiTypography>
       </div>
     </div>
   );
