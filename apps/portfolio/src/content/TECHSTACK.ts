@@ -36,6 +36,7 @@ import {
   PRISMA_SVG,
   NEST_JS_SVG,
   DRIZZLE_SVG,
+  SUPABASE_SVG,
 } from './SVG';
 
 const REACT_JS: ITechToolStack = {
@@ -205,12 +206,21 @@ const DRIZZLE: ITechToolStack = {
   type: TechToolType.SUB,
 };
 
+const SUPABASE: ITechToolStack = {
+  name: 'Supabase',
+  description:
+    'Firebase alternative. Free Postgres DB, authentication, realtime, storage, like firebase for real!',
+  icon: SUPABASE_SVG,
+  type: TechToolType.SUB,
+};
+
 // #region Sub Tech Stacks
 export const SUB_TECH_STACKS: ITechToolStack[] = [
   BOOTSTRAP,
   UNITY,
   REACT_NATIVE,
   DRIZZLE,
+  SUPABASE,
 ];
 // #endregion
 
