@@ -35,6 +35,8 @@ import {
   ANDROID_SVG,
   PRISMA_SVG,
   NEST_JS_SVG,
+  DRIZZLE_SVG,
+  SUPABASE_SVG,
 } from './SVG';
 
 const REACT_JS: ITechToolStack = {
@@ -196,11 +198,29 @@ const ANDROID_STUDIO: ITechToolStack = {
   type: TechToolType.SUB,
 };
 
+const DRIZZLE: ITechToolStack = {
+  name: 'Drizzle',
+  description:
+    "Typescript ORM, the better prisma. Comes with 'drizzle-zod' for schema validation. Definitely will be my default ORM if I'm using Node (for now).",
+  icon: DRIZZLE_SVG,
+  type: TechToolType.SUB,
+};
+
+const SUPABASE: ITechToolStack = {
+  name: 'Supabase',
+  description:
+    'Firebase alternative. Free Postgres DB, authentication, realtime, storage, like firebase for real!',
+  icon: SUPABASE_SVG,
+  type: TechToolType.SUB,
+};
+
 // #region Sub Tech Stacks
 export const SUB_TECH_STACKS: ITechToolStack[] = [
   BOOTSTRAP,
   UNITY,
   REACT_NATIVE,
+  DRIZZLE,
+  SUPABASE,
 ];
 // #endregion
 
