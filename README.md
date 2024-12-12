@@ -104,6 +104,27 @@ nx run <project_name/>:start
 ```
 
 
+## React Vite Applications [here](https://nx.dev/nx-api/vite)
+Prerequisites:
+```bash
+nx add @nx/vite
+nx add @nx/vite --setupPathsPlugin
+```
+Generate Vite App
+```bash
+nx g @nx/react:app apps/my-app --bundler=vite
+```
+Start App **Development Server**
+```bash
+nx run my-app:serve
+```
+Start App **Prod Server**
+```bash
+nx run my-app:build
+# then
+nx run my-app:preview
+```
+
 [Nx, How to Deploy to Vercel](https://nx.dev/recipes/react/deploy-nextjs-to-vercel)
 
 <a alt="Nx logo" href="https://nx.dev" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="45"></a>
