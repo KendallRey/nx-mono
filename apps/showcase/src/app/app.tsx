@@ -6,6 +6,7 @@ import { Route, Routes, Link } from 'react-router-dom';
 import { Draggable } from '../components/Draggable';
 import { Droppable } from '../components/Droppable';
 import DragAndDropPage from './pages/drag-and-drop/DragAndDropPage';
+import MuiComponentsPage from './pages/mui-components/MuiComponentsPage';
 
 
 export function App() {
@@ -16,6 +17,7 @@ export function App() {
       <NxWelcome title="showcase" />
       <div className='flex gap-4'>
       <DragAndDropPage/>
+      <MuiComponentsPage/>
       </div>
       {/* START: routes */}
       {/* These routes and navigation have been generated for you */}

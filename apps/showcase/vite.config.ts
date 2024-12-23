@@ -20,6 +20,9 @@ export default defineConfig({
   // worker: {
   //  plugins: [ nxViteTsPaths() ],
   // },
+  define: {
+    'process.env': {}, // Define process.env as an empty object or customize
+  },
   build: {
     outDir: '../../dist/apps/showcase',
     emptyOutDir: true,
