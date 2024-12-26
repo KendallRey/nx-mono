@@ -11,7 +11,7 @@ import { MuiTypography } from '@nx-next-js-micro/components';
 
 const TechAndToolPage = () => {
   return (
-    <div className="my-24 px-0 md:px-4 flex flex-col text-neutral-300 max-w-[1400px] mx-auto">
+    <div className="my-24 px-0 md:px-4 flex flex-col gap-6 text-neutral-300 max-w-[1400px] mx-auto">
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
         {TECH_STACKS.map((tech) => (
           <Card key={tech.name} {...tech} />
