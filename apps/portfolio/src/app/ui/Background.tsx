@@ -12,18 +12,18 @@ const Background: React.FC<IBackground> = ({ mode }) => {
       className="absolute inset-0 overflow-hidden"
       style={{ pointerEvents: 'none' }}
     >
-      <div className="mx-6 my-6 md:mx-12">
+      <div className="mx-6 my-8 md:mx-12">
         <h1
           className={`${
             mode === 'dark' ? 'text-neutral-700' : 'text-white'
-          } text-[70px] sm:text-[90px] md:text-[120px] lg:text-[170px]`}
+          } text-[70px] sm:text-[70px] md:text-[100px] lg:text-[150px]`}
         >
           KENDALL
         </h1>
         <h2
           className={`${
             mode === 'dark' ? 'text-neutral-800' : 'text-neutral-300'
-          } text-[55px] sm:text-[70px] md:text-[80px] lg:text-[120px]`}
+          } text-[55px] sm:text-[50px] md:text-[80px] lg:text-[100px]`}
           style={{ lineHeight: 0.1 }}
         >
           REY
@@ -31,7 +31,7 @@ const Background: React.FC<IBackground> = ({ mode }) => {
         <h2
           className={`${
             mode === 'dark' ? 'text-neutral-800' : 'text-neutral-300'
-          } text-[55px] sm:text-[90px] md:text-[100px] lg:text-[150px]`}
+          } text-[55px] sm:text-[70px] md:text-[80px] lg:text-[130px]`}
         >
           MOZO
         </h2>
