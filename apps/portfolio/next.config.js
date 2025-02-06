@@ -15,7 +15,7 @@ const nextConfig = {
     remotePatterns: [
       ...hostnames.map((hostname) => ({
         hostname: hostname,
-        port: '',
+        port: '3000',
         pathname: '/**',
       })),
     ],
